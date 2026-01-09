@@ -68,6 +68,29 @@ Record all major decisions here to preserve institutional knowledge.
 - Simple format (Page | Element | Selector) - loses context
 - JSON format - harder for humans to read/edit
 
+## AD-005: ESLint Configuration Format
+**Date:** 2025-01-10
+**Status:** Accepted
+**Decision:** Use `.eslintrc.js` with CommonJS format (`module.exports`) instead of flat config or JSON
+**Context:** 
+- ESLint 9 defaults to flat config (`eslint.config.js/mjs`)
+- Project has `"type": "commonjs"` in package.json
+- Playwright community best practices recommend `.eslintrc.js` format
+- Original setup had `.eslintrc.json` which works but lacks flexibility
+- During Architect Mode, flat config files were created, causing conflicts
+**Consequences:**
+- ✅ Aligns with Playwright project conventions
+- ✅ Works seamlessly with CommonJS project structure
+- ✅ Supports `eslint-plugin-playwright` for Playwright-specific rules
+- ✅ More flexible than JSON (can use comments, dynamic config)
+- ✅ Compatible with ESLint 9 (legacy config still supported)
+- ❌ Not the "newest" format (flat config is newer)
+- ❌ Requires CommonJS syntax (matches project setup)
+**Alternatives Considered:**
+- Keep `.eslintrc.json` - works but less flexible, harder to add Playwright plugin
+- Use flat config (`eslint.config.mjs`) - newer but conflicts with CommonJS project, not Playwright convention
+- Use `.eslintrc.js` with ES modules - requires changing package.json type, breaks existing setup
+
 ---
 
 ## Template for New Decisions

@@ -46,5 +46,21 @@ await page.locator('[data-testid="element"]').click();
 
 ---
 
+## Pattern: ESLint Config Conflict After Setup
+**First Seen:** 2025-01-10
+**Frequency:** Rare
+**Symptom:** `SyntaxError: Cannot use import statement outside a module` or `ESLint couldn't find an eslint.config.(js|mjs|cjs) file`
+**Root Cause:** Multiple ESLint configuration files present (e.g., `.eslintrc.json`, `eslint.config.js`, `eslint.config.mjs`). ESLint 9 defaults to flat config format, but project uses CommonJS. When both formats exist, conflicts occur.
+**Fix:** 
+1. Remove all conflicting config files
+2. Use single `.eslintrc.js` with CommonJS format (`module.exports`)
+3. Set `ESLINT_USE_FLAT_CONFIG=false` in npm script to enable legacy config support
+4. Install `eslint-plugin-playwright` for Playwright-specific rules
+**Prevention:** 
+- Always check for existing ESLint config files before creating new ones
+- Use `.eslintrc.js` format for Playwright projects (aligns with community best practices)
+- Document ESLint config format decision in decision_log.md (see AD-005)
+**Affected Tests:** All files (build-time issue, not test-specific)
+
 *Your failure patterns go below this line*
 

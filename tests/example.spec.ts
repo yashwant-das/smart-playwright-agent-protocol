@@ -14,6 +14,6 @@ test.describe('Example Login Flow', () => {
     // Take screenshot for documentation
     await loginPage.takeScreenshot('login_page_loaded');
     
-    expect(page).toHaveURL(/.*login/);
+    await expect(page).toHaveURL(/.*login/);
   });
 });

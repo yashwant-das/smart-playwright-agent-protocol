@@ -11,9 +11,14 @@
 - **Why Community Edition:** Supports element highlighting (critical for verification)
 
 ## Code Quality Tools
-- **Linter:** ESLint
+- **Linter:** ESLint 9.x
+- **Config Format:** `.eslintrc.js` (CommonJS format, aligns with Playwright best practices)
+- **Plugins:** 
+  - `@typescript-eslint/eslint-plugin` - TypeScript support
+  - `eslint-plugin-playwright` - Playwright-specific rules
 - **Formatter:** Prettier
 - **Type Checking:** TypeScript compiler
+- **Decision Reference:** See AD-005 in decision_log.md
 
 ## Assertion Strategy
 - `expect(locator).toBeVisible()` - Element exists and is visible

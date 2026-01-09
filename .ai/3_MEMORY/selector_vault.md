@@ -45,3 +45,9 @@ Dashboard | WelcomeMessage | .user-greeting | css-semantic | 2024-01-10 | Requir
 
 *Your verified selectors go below this line*
 
+```
+SauceDemo Login | UsernameField | #user-name | id | 2025-01-10 | Stable ID, verified via browser evaluation and hover. No waits needed.
+SauceDemo Login | PasswordField | #password | id | 2025-01-10 | Stable ID, verified via browser evaluation and hover. No waits needed.
+SauceDemo Login | LoginButton | #login-button | id | 2025-01-10 | Stable ID, type="submit", verified via browser evaluation and hover. No waits needed.
+SauceDemo Login | ErrorMessageContainer | .error-message-container | css | 2025-01-10 | Error validation element, only visible on failed login. Verified via browser evaluation.
+```
