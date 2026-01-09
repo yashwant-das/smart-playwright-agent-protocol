@@ -55,6 +55,36 @@
 - Prefer explicit decisions over assumptions
 - Prefer documented standards over "what seems best"
 
+## 7. Git Commit Standards
+
+Before committing ANY changes:
+1. **Read** `.ai/1_CONTEXT/git_standards.md`
+2. **Follow** the commit message format exactly
+3. **Show diff** to user before committing
+4. **Never commit** secrets or hardcoded paths
+5. **Always run** pre-commit checklist
+6. **Use feature branches** - never commit directly to main
+
+**Commit Types:**
+- `feat` - New feature/test/page
+- `heal` - Healer Mode fixes
+- `map` - Cartographer Mode
+- `arch` - Architect Mode
+- `fix` - Bug fixes
+- `refactor` - Code improvements
+- `docs` - Documentation only
+- `chore` - Maintenance
+
+See: `.ai/1_CONTEXT/git_standards.md` for full standard.
+
+## Git Workflow Rules
+- **ALWAYS** create a feature branch before Architect Mode
+- **NEVER** commit directly to main/master without permission
+- **ALWAYS** show diff before committing
+- **NEVER** force push
+- **ALWAYS** ask before pushing to remote
+- **NEVER** commit secrets or hardcoded paths
+
 ## Exit Criteria for Each Mode
 - **Cartographer:** All selectors highlighted + vault populated
 - **Architect:** Tests run green + lint passes
