@@ -23,6 +23,7 @@ test-results.json
 # IDE Files
 .vscode/
 .idea/
+.cursor/
 
 # Agentic QA Protocol - Generated/Temporary Files
 # Don't commit screenshots (too large)

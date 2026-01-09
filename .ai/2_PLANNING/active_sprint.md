@@ -20,7 +20,14 @@
 ### Phase 3: Validation
 - [x] *All tasks completed - see daily log 2026-01-10*
 
-### Phase 4: Expansion (Next Session)
+### Phase 4: Code Quality & Refactoring (Archaeology Mode)
+- [ ] **Refactor legacy tests** - Remove raw locators from spec files, ensure 100% POM compliance
+  - See: `.ai/2_PLANNING/migration_plan.md` for detailed plan
+  - Priority: High (violates POM standard)
+  - Effort: 3.5-5.5 hours
+  - Audit report: `.ai/2_PLANNING/archaeology_audit_report.md`
+
+### Phase 5: Expansion (Next Session)
 - [ ] Add tests for other SauceDemo pages (inventory, cart, checkout)
 - [ ] Create page objects for additional pages
 - [ ] Add edge case tests (locked out user, performance glitch user)
