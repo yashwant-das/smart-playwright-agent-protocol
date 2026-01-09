@@ -13,10 +13,10 @@
 ## Example Entries
 
 ```
-Login | UsernameField | [data-testid="username"] | testid | 2024-01-10 | Stable, no waits needed
-Login | PasswordField | [data-testid="password"] | testid | 2024-01-10 | Stable, no waits needed
-Login | SubmitButton | button[type="submit"] | css | 2024-01-10 | Only submit button on page
-Dashboard | WelcomeMessage | .user-greeting | css-semantic | 2024-01-10 | Requires networkidle wait
+Login | UsernameField | [data-testid="username"] | testid | 2026-01-10 | Stable, no waits needed
+Login | PasswordField | [data-testid="password"] | testid | 2026-01-10 | Stable, no waits needed
+Login | SubmitButton | button[type="submit"] | css | 2026-01-10 | Only submit button on page
+Dashboard | WelcomeMessage | .user-greeting | css-semantic | 2026-01-10 | Requires networkidle wait
 ```
 
 ---

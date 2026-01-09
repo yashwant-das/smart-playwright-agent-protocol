@@ -16,7 +16,7 @@ Record all major decisions here to preserve institutional knowledge.
 ---
 
 ## AD-001: Use Community MCP Server Over Official
-**Date:** 2024-01-10
+**Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** Use `@executeautomation/playwright-mcp-server`
 **Context:** Need element highlighting for Cartographer mode verification
@@ -29,7 +29,7 @@ Record all major decisions here to preserve institutional knowledge.
 - Custom MCP server - too much maintenance overhead
 
 ## AD-002: Ban XPath Selectors
-**Date:** 2024-01-10
+**Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** XPath selectors are prohibited unless no alternative exists
 **Context:** XPath breaks frequently with DOM restructures
@@ -42,7 +42,7 @@ Record all major decisions here to preserve institutional knowledge.
 - Allow XPath for read-only operations - inconsistent rule
 
 ## AD-003: Mandatory Page Object Model
-**Date:** 2024-01-10
+**Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** All tests must use POM, no raw locators in specs
 **Context:** Maintainability and reusability
@@ -56,7 +56,7 @@ Record all major decisions here to preserve institutional knowledge.
 - Use helper functions instead of classes - less structured
 
 ## AD-004: Selector Vault Metadata Fields
-**Date:** 2024-01-10
+**Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** Vault format: `Page | Element | Selector | Strategy | Verified | Notes`
 **Context:** Need traceability and confidence scoring

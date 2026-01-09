@@ -123,7 +123,7 @@ Documentation:
 
 Status: <emoji> <status>
 
-See: <reference to decision_log.md or failure_patterns.md>
+See: <reference to .ai/1_CONTEXT/decision_log.md or .ai/3_MEMORY/failure_patterns.md>
 ```
 
 ### For Refactoring Commits (refactor):
@@ -180,9 +180,9 @@ Cartographer Mode:
 Architect Mode:
 - Created SauceDemoLoginPage.ts with POM pattern
 - Created 3 test cases:
-  * Display verification
-  * Successful login flow
-  * Error message handling
+  - Display verification
+  - Successful login flow
+  - Error message handling
 - All tests passing (headed and headless)
 - ESLint: 0 errors, TypeScript: clean
 
@@ -215,7 +215,7 @@ Resolution:
 - Fixed missing await in example.spec.ts
 
 Documentation:
-- Decision logged: AD-005 in decision_log.md
+- Decision logged: AD-005 in .ai/1_CONTEXT/decision_log.md
 - Failure pattern logged: "ESLint Config Conflict After Setup"
 - Tech stack updated with ESLint configuration approach
 

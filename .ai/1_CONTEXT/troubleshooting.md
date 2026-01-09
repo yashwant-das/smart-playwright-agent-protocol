@@ -70,7 +70,7 @@ test.use({ storageState: 'auth.json' });
 
 ### Problem: "Vault has duplicate entries"
 **Prevention:**
-- Before adding selector, search vault: `grep "ElementName" selector_vault.md`
+- Before adding selector, search vault: `grep "ElementName" .ai/3_MEMORY/selector_vault.md`
 - Use consistent naming: `PageName_ElementName` format
 
 **Cleanup:**

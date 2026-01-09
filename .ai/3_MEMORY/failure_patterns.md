@@ -17,7 +17,7 @@
 ---
 
 ## Pattern: Element Not Found After Deploy
-**First Seen:** 2024-01-10
+**First Seen:** 2026-01-10
 **Frequency:** Common
 **Symptom:** `Error: locator.click: Target closed`
 **Root Cause:** Race condition - element loads slower in CI than local
@@ -32,7 +32,7 @@ await page.locator('[data-testid="element"]').click();
 ---
 
 ## Pattern: Flaky Click on Mobile Viewport
-**First Seen:** 2024-01-10
+**First Seen:** 2026-01-10
 **Frequency:** Occasional
 **Symptom:** Click doesn't register, no error thrown
 **Root Cause:** Element obscured by sticky header
@@ -59,7 +59,7 @@ await page.locator('[data-testid="element"]').click();
 **Prevention:** 
 - Always check for existing ESLint config files before creating new ones
 - Use `.eslintrc.js` format for Playwright projects (aligns with community best practices)
-- Document ESLint config format decision in decision_log.md (see AD-005)
+- Document ESLint config format decision in `.ai/1_CONTEXT/decision_log.md` (see AD-005)
 **Affected Tests:** All files (build-time issue, not test-specific)
 
 *Your failure patterns go below this line*

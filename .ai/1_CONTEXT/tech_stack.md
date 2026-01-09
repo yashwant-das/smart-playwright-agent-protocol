@@ -18,7 +18,7 @@
   - `eslint-plugin-playwright` - Playwright-specific rules
 - **Formatter:** Prettier
 - **Type Checking:** TypeScript compiler
-- **Decision Reference:** See AD-005 in decision_log.md
+- **Decision Reference:** See AD-005 in `.ai/1_CONTEXT/decision_log.md`
 
 ## Assertion Strategy
 - `expect(locator).toBeVisible()` - Element exists and is visible
