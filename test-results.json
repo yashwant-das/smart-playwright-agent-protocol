@@ -1,0 +1,166 @@
+{
+  "config": {
+    "configFile": "/Users/yash/Work/Playwright/agentic-qa-v2/playwright.config.ts",
+    "rootDir": "/Users/yash/Work/Playwright/agentic-qa-v2/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/yash/Work/Playwright/agentic-qa-v2/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/yash/Work/Playwright/agentic-qa-v2/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.57.0",
+    "workers": 8,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "example.spec.ts",
+      "file": "example.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Example Login Flow",
+          "file": "example.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should load login page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "interrupted",
+                      "duration": 25725,
+                      "error": {
+                        "message": "Error: locator.waitFor: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"username\"]') to be visible\u001b[22m\n",
+                        "stack": "Error: locator.waitFor: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"username\"]') to be visible\u001b[22m\n\n    at LoginPage.isLoaded (/Users/yash/Work/Playwright/agentic-qa-v2/pages/ExampleLoginPage.ts:25:30)\n    at /Users/yash/Work/Playwright/agentic-qa-v2/tests/example.spec.ts:12:21",
+                        "location": {
+                          "file": "/Users/yash/Work/Playwright/agentic-qa-v2/pages/ExampleLoginPage.ts",
+                          "column": 30,
+                          "line": 25
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../pages/ExampleLoginPage.ts:25\n\n\u001b[0m \u001b[90m 23 |\u001b[39m\n \u001b[90m 24 |\u001b[39m   \u001b[36masync\u001b[39m isLoaded() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39musernameInput\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 27 |\u001b[39m   }\n \u001b[90m 28 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/yash/Work/Playwright/agentic-qa-v2/pages/ExampleLoginPage.ts",
+                            "column": 30,
+                            "line": 25
+                          },
+                          "message": "Error: locator.waitFor: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"username\"]') to be visible\u001b[22m\n\n\n\u001b[90m   at \u001b[39m../pages/ExampleLoginPage.ts:25\n\n\u001b[0m \u001b[90m 23 |\u001b[39m\n \u001b[90m 24 |\u001b[39m   \u001b[36masync\u001b[39m isLoaded() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39musernameInput\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpasswordInput\u001b[33m.\u001b[39mwaitFor({ state\u001b[33m:\u001b[39m \u001b[32m'visible'\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 27 |\u001b[39m   }\n \u001b[90m 28 |\u001b[39m }\u001b[0m\n\u001b[2m    at LoginPage.isLoaded (/Users/yash/Work/Playwright/agentic-qa-v2/pages/ExampleLoginPage.ts:25:30)\u001b[22m\n\u001b[2m    at /Users/yash/Work/Playwright/agentic-qa-v2/tests/example.spec.ts:12:21\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-01-09T19:12:18.515Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/yash/Work/Playwright/agentic-qa-v2/test-results/example-Example-Login-Flow-should-load-login-page-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/yash/Work/Playwright/agentic-qa-v2/test-results/example-Example-Login-Flow-should-load-login-page-chromium/video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/yash/Work/Playwright/agentic-qa-v2/test-results/example-Example-Login-Flow-should-load-login-page-chromium/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/yash/Work/Playwright/agentic-qa-v2/pages/ExampleLoginPage.ts",
+                        "column": 30,
+                        "line": 25
+                      }
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "a30a6eba6312f6b87ea5-4d55de7490fb5335b7dc",
+              "file": "example.spec.ts",
+              "line": 5,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-01-09T19:12:17.977Z",
+    "duration": 26370.451000000005,
+    "expected": 0,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
