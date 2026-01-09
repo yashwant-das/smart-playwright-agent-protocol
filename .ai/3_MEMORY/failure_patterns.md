@@ -47,7 +47,7 @@ await page.locator('[data-testid="element"]').click();
 ---
 
 ## Pattern: ESLint Config Conflict After Setup
-**First Seen:** 2025-01-10
+**First Seen:** 2026-01-10
 **Frequency:** Rare
 **Symptom:** `SyntaxError: Cannot use import statement outside a module` or `ESLint couldn't find an eslint.config.(js|mjs|cjs) file`
 **Root Cause:** Multiple ESLint configuration files present (e.g., `.eslintrc.json`, `eslint.config.js`, `eslint.config.mjs`). ESLint 9 defaults to flat config format, but project uses CommonJS. When both formats exist, conflicts occur.

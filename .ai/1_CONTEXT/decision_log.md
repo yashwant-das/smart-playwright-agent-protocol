@@ -69,7 +69,7 @@ Record all major decisions here to preserve institutional knowledge.
 - JSON format - harder for humans to read/edit
 
 ## AD-005: ESLint Configuration Format
-**Date:** 2025-01-10
+**Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** Use `.eslintrc.js` with CommonJS format (`module.exports`) instead of flat config or JSON
 **Context:** 
