@@ -1,0 +1,10 @@
+# <type>(<scope>): <subject>
+# 
+# <body>
+# 
+# <footer>
+# 
+# Types: feat, fix, heal, map, arch, refactor, test, docs, chore
+# Scopes: login, products, cart, checkout, pages, tests, config, ci
+# 
+# See .ai/1_CONTEXT/git_standards.md for full guide
