@@ -36,6 +36,25 @@
 - Every failure must be logged in failure_patterns.md
 - Every architectural decision must be logged
 
+## 6. Change Management Protocol
+
+### Before Making ANY Tech Stack Changes:
+1. **Check decision_log.md** - Has this been decided before?
+2. **Check tech_stack.md** - What's the current standard?
+3. **Document FIRST** - Add proposed decision to decision_log.md
+4. **Then implement** - Make the code changes
+5. **Update docs** - Update tech_stack.md if needed
+
+### Never Make Silent Changes:
+- ❌ Don't switch config formats without documenting
+- ❌ Don't add new dependencies without decision log entry
+- ❌ Don't change architecture without updating docs
+
+### When Decisions Conflict:
+- Prefer decision_log.md over old code
+- Prefer explicit decisions over assumptions
+- Prefer documented standards over "what seems best"
+
 ## Exit Criteria for Each Mode
 - **Cartographer:** All selectors highlighted + vault populated
 - **Architect:** Tests run green + lint passes
