@@ -1,11 +1,35 @@
+# Dependencies
 node_modules/
+
+# Playwright Test Results
 /test-results/
+test-results.json
 /playwright-report/
 /playwright/.cache/
+
+# Build Output
 /dist/
+
+# Environment Variables
 .env
 .env.local
+
+# Logs
 *.log
+
+# OS Files
 .DS_Store
+
+# IDE Files
 .vscode/
 .idea/
+
+# Agentic QA Protocol - Generated/Temporary Files
+# Don't commit screenshots (too large)
+.ai/2_PLANNING/maps/*.png
+
+# Don't commit old archives
+.ai/2_PLANNING/daily_logs/archive/
+
+# Don't commit temp notes
+.ai/2_PLANNING/scratch.md
