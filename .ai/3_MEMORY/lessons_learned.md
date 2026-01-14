@@ -5,6 +5,7 @@
 ---
 
 ## Lesson: Always Verify Selectors Visually
+
 **Date:** 2026-01-10
 **Context:** Wrote 10 tests with CSS selectors, 7 failed on first run
 **Insight:** LLMs can hallucinate selectors that look correct but don't exist
@@ -14,6 +15,7 @@
 ---
 
 ## Lesson: Page Objects Catch Refactors Early
+
 **Date:** 2026-01-10
 **Context:** Login button selector changed, broke 5 tests
 **Insight:** With POM, only needed to change 1 file instead of 5
@@ -22,5 +24,4 @@
 
 ---
 
-*Your lessons go below this line*
-
+> **Your lessons go below this line**

@@ -3,6 +3,7 @@
 Record all major decisions here to preserve institutional knowledge.
 
 **Format:**
+
 ```
 ## AD-XXX: [Decision Title]
 **Date:** YYYY-MM-DD
@@ -16,11 +17,13 @@ Record all major decisions here to preserve institutional knowledge.
 ---
 
 ## AD-001: Use Community MCP Server Over Official
+
 **Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** Use `@executeautomation/playwright-mcp-server`
 **Context:** Need element highlighting for Cartographer mode verification
-**Consequences:** 
+**Consequences:**
+
 - ✅ Can verify selectors visually before coding
 - ❌ Risk of API changes (community-maintained)
 - ❌ May need migration if official MCP adds highlight feature
@@ -29,11 +32,13 @@ Record all major decisions here to preserve institutional knowledge.
 - Custom MCP server - too much maintenance overhead
 
 ## AD-002: Ban XPath Selectors
+
 **Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** XPath selectors are prohibited unless no alternative exists
 **Context:** XPath breaks frequently with DOM restructures
 **Consequences:**
+
 - ✅ More resilient tests
 - ❌ Harder to select deeply nested elements
 - ❌ Some legacy apps may require exceptions
@@ -42,11 +47,13 @@ Record all major decisions here to preserve institutional knowledge.
 - Allow XPath for read-only operations - inconsistent rule
 
 ## AD-003: Mandatory Page Object Model
+
 **Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** All tests must use POM, no raw locators in specs
 **Context:** Maintainability and reusability
 **Consequences:**
+
 - ✅ Centralized selector management
 - ✅ Easier refactoring
 - ❌ More boilerplate code
@@ -56,11 +63,13 @@ Record all major decisions here to preserve institutional knowledge.
 - Use helper functions instead of classes - less structured
 
 ## AD-004: Selector Vault Metadata Fields
+
 **Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** Vault format: `Page | Element | Selector | Strategy | Verified | Notes`
 **Context:** Need traceability and confidence scoring
 **Consequences:**
+
 - ✅ Can track selector staleness
 - ✅ Can prioritize reliable selectors
 - ❌ More verbose vault entries
@@ -69,10 +78,12 @@ Record all major decisions here to preserve institutional knowledge.
 - JSON format - harder for humans to read/edit
 
 ## AD-005: ESLint Configuration Format
+
 **Date:** 2026-01-10
 **Status:** Accepted
 **Decision:** Use `.eslintrc.js` with CommonJS format (`module.exports`) instead of flat config or JSON
-**Context:** 
+**Context:**
+
 - ESLint 9 defaults to flat config (`eslint.config.js/mjs`)
 - Project has `"type": "commonjs"` in package.json
 - Playwright community best practices recommend `.eslintrc.js` format
@@ -96,9 +107,10 @@ Record all major decisions here to preserve institutional knowledge.
 ## Template for New Decisions
 
 ## AD-XXX: [Title]
+
 **Date:** YYYY-MM-DD
 **Status:** Proposed
-**Decision:** 
-**Context:** 
-**Consequences:** 
-**Alternatives Considered:** 
+**Decision:**
+**Context:**
+**Consequences:**
+**Alternatives Considered:**

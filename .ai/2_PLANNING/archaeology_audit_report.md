@@ -11,6 +11,7 @@
 This audit report provides a comprehensive analysis of the test suite, identifying compliance with Page Object Model (POM) standards and selector strategy best practices.
 
 ### Key Findings
+
 - ✅ **Total tests:** 3
 - ⚠️ **Using POM:** Partial (Page Objects exist but raw locators in spec files)
 - ✅ **XPath usage:** None (compliant)
@@ -22,6 +23,7 @@ This audit report provides a comprehensive analysis of the test suite, identifyi
 ## Test Suite Inventory
 
 ### Test Files
+
 | File | Tests | Status |
 |------|-------|--------|
 | `tests/saucedemo-login.spec.ts` | 3 | ⚠️ Needs refactoring |
@@ -36,6 +38,7 @@ This audit report provides a comprehensive analysis of the test suite, identifyi
 ### POM Usage: ⚠️ **Partial Compliance**
 
 #### Page Objects Found
+
 - ✅ `pages/BasePage.ts` - Base class with common methods
 - ✅ `pages/SauceDemoLoginPage.ts` - Login page object
 
@@ -68,13 +71,16 @@ This audit report provides a comprehensive analysis of the test suite, identifyi
 | **xpath** | 0 | None | ✅ Compliant (banned) |
 
 ### Selector Strategy Summary
+
 - **testid:** 0
 - **css:** 5 (3 ID, 2 class)
 - **xpath:** 0
 - **aria-label/role:** 0
 
 ### Rationale
+
 SauceDemo is a demo site where we cannot add `data-testid` attributes. CSS selectors (ID/class) are acceptable in this context, but should be:
+
 1. Documented in selector_vault.md
 2. Verified via MCP before use
 3. Kept in Page Objects only (not in spec files)
@@ -99,6 +105,7 @@ SauceDemo is a demo site where we cannot add `data-testid` attributes. CSS selec
 ## Tests Needing Refactoring
 
 ### High Priority
+
 1. **`tests/saucedemo-login.spec.ts`**
    - **Issue:** 5 raw locators violating POM principle
    - **Impact:** High - violates core architecture standard
@@ -106,6 +113,7 @@ SauceDemo is a demo site where we cannot add `data-testid` attributes. CSS selec
    - **Dependencies:** None
 
 ### Medium Priority
+
 2. **Create `pages/SauceDemoInventoryPage.ts`**
    - **Issue:** Inventory page interactions not in Page Object
    - **Impact:** Medium - needed for proper POM compliance
@@ -129,11 +137,13 @@ SauceDemo is a demo site where we cannot add `data-testid` attributes. CSS selec
 ## Recommendations
 
 ### Immediate Actions (This Sprint)
+
 1. ✅ **Remove raw locators from spec files** - Move all locators to Page Objects
 2. ✅ **Create Inventory Page Object** - For proper page separation
 3. ✅ **Add getter methods** - If direct element access needed in tests
 
 ### Future Improvements
+
 1. Document CSS selector rationale in selector_vault.md
 2. Consider adding helper methods in Page Objects for common assertions
 3. Expand test coverage to other pages (already planned in sprint)

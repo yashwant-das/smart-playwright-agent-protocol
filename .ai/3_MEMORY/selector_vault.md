@@ -1,9 +1,11 @@
 # Selector Vault
+
 *Approved, tested selectors only. This is the source of truth.*
 
 **Format:** `Page | Element | Selector | Strategy | Verified | Notes`
 
 **Verification Rules:**
+
 1. Every selector MUST be highlighted via MCP before entry
 2. Update "Verified" date if selector is re-tested
 3. Add notes for special cases (waits, iframes, etc.)
@@ -12,7 +14,7 @@
 
 ## Example Entries
 
-```
+```text
 Login | UsernameField | [data-testid="username"] | testid | 2026-01-10 | Stable, no waits needed
 Login | PasswordField | [data-testid="password"] | testid | 2026-01-10 | Stable, no waits needed
 Login | SubmitButton | button[type="submit"] | css | 2026-01-10 | Only submit button on page
@@ -24,6 +26,7 @@ Dashboard | WelcomeMessage | .user-greeting | css-semantic | 2026-01-10 | Requir
 ## Legend
 
 **Strategy Codes:**
+
 - `testid` - data-testid attribute (preferred)
 - `aria` - aria-label or role
 - `id` - element id
@@ -33,6 +36,7 @@ Dashboard | WelcomeMessage | .user-greeting | css-semantic | 2026-01-10 | Requir
 - `xpath` - XPath (requires AD log justification)
 
 **Special Notes Abbreviations:**
+
 - `iframe` - Element is inside iframe
 - `wait-net` - Requires waitForLoadState('networkidle')
 - `wait-sel` - Requires explicit waitForSelector
@@ -43,9 +47,9 @@ Dashboard | WelcomeMessage | .user-greeting | css-semantic | 2026-01-10 | Requir
 
 ## Active Selectors
 
-*Your verified selectors go below this line*
+> **Your verified selectors go below this line**
 
-```
+```text
 SauceDemo Login | UsernameField | #user-name | id | 2026-01-10 | Stable ID, verified via browser evaluation and hover. No waits needed.
 SauceDemo Login | PasswordField | #password | id | 2026-01-10 | Stable ID, verified via browser evaluation and hover. No waits needed.
 SauceDemo Login | LoginButton | #login-button | id | 2026-01-10 | Stable ID, type="submit", verified via browser evaluation and hover. No waits needed.

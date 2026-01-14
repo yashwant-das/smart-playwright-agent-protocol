@@ -11,20 +11,17 @@
 
 Every work session follows this cycle:
 
-```
-1. Morning Ritual (Startup)
-   ↓
-2. Cartographer Mode (Discovery)
-   ↓
-3. Architect Mode (Implementation)
-   ↓
-4. Healer Mode (Fixes - as needed)
-   ↓
-5. Git Commit Flow (Documentation)
-   ↓
-6. Night Watchman Mode (Shutdown)
-   ↓
-7. Continuous Modes (As Needed)
+```mermaid
+graph TD
+    P1[1. Morning Ritual<br/><i>Startup</i>] --> P2[2. Cartographer Mode<br/><i>Discovery</i>]
+    P2 --> P3[3. Architect Mode<br/><i>Implementation</i>]
+    P3 --> P4[4. Healer Mode<br/><i>Fixes</i>]
+    P4 --> P5[5. Git Commit Flow<br/><i>Documentation</i>]
+    P5 --> P6[6. Night Watchman Mode<br/><i>Shutdown</i>]
+    P6 -.-> P7[7. Continuous Modes<br/><i>As Needed</i>]
+
+    classDef phase fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    class P1,P2,P3,P4,P5,P6,P7 phase;
 ```
 
 **Key Principle:** Each phase has **clear entry criteria, tasks, and exit criteria**. Never skip phases.
@@ -101,7 +98,8 @@ Target: https://www.saucedemo.com/inventory.html
 
 ## 🟢 **Phase 2: Cartographer Mode (Discovery)**
 
-**When to Use:** 
+**When to Use:**
+
 - Starting a new page/feature
 - Investigating existing page changes
 - Selector validation/audit
@@ -289,16 +287,19 @@ export class [PageName]Page extends BasePage {
 ```
 
 ### 2. Create Test Spec
+
 **Location:** `tests/[feature-name].spec.ts`
 
 **Requirements:**
+
 - Import the Page Object
 - Write 3-5 test cases covering:
-  * Happy path (primary user flow)
-  * Edge cases (error handling, validation)
-  * Verification (page loads correctly)
+  - Happy path (primary user flow)
+  - Edge cases (error handling, validation)
+  - Verification (page loads correctly)
   
 **Structure:**
+
 ```typescript
 import { test, expect } from '@playwright/test';
 import { [PageName]Page } from '../pages/[PageName]Page';
@@ -321,7 +322,9 @@ test.describe('[Feature Name]', () => {
 ```
 
 ### 3. Code Quality Checks
+
 Execute in order:
+
 1. `npm run lint` - Check for errors
    - If errors found → `npm run lint:fix` - Auto-fix what can be fixed
    - Manually fix remaining errors before proceeding
@@ -331,16 +334,19 @@ Execute in order:
 5. If all pass → `npm test` (headless verification)
 
 ### 4. Documentation
+
 - Add JSDoc comments to complex methods
 - Update selector vault if any selectors needed adjustment
 - Add any special cases to active_sprint.md Notes
 
 ### 5. Update Active Sprint
+
 - Mark Architect tasks as [x] complete
 - Note any edge cases discovered
 - Update "Last Completed Task"
 
 **Exit Criteria:**
+
 - [ ] Page Object created following POM pattern
 - [ ] Test spec created with 3+ test cases
 - [ ] All tests passing (green) in both headed and headless
@@ -349,24 +355,29 @@ Execute in order:
 - [ ] No hardcoded values (use fixtures/config)
 - [ ] Active sprint updated
 
-**Deliverable:** 
+**Deliverable:**
+
 - Working Page Object file
 - Passing test spec file
 - Updated active sprint
 
 **CRITICAL:** If any test fails, STOP and activate Healer Mode immediately.
+
 ```
 
 ### **Architect → Git Commit Flow:**
 
 ```
+
 Activate **Git Commit Flow**.
 
 **Context:**
+
 - Read `.ai/1_CONTEXT/git_standards.md`
 - Architect Mode just completed
 
 **Pre-Commit Checklist:**
+
 - [ ] All tests passing (npm test)
 - [ ] Linter clean (npm run lint)
   - If errors → Run `npm run lint:fix` first, then fix remaining manually
@@ -379,6 +390,7 @@ Activate **Git Commit Flow**.
 **Commit Scope:** [page-name]
 
 **Task:**
+
 1. Stage files: `git add pages/ tests/ .ai/`
 2. Show me `git diff --staged` for review
 3. Prepare commit message:
@@ -390,6 +402,7 @@ Activate **Git Commit Flow**.
 6. Update active_sprint.md "Last Commit"
 
 **Deliverable:** Committed feature with proper message
+
 ```
 
 **Example Architect Commit:**
@@ -423,7 +436,8 @@ See: .ai/2_PLANNING/active_sprint.md"
 
 ## 🔴 **Phase 4: Healer Mode (Maintenance & Fixes)**
 
-**When to Use:** 
+**When to Use:**
+
 - Test fails
 - Selector breaks
 - Unexpected behavior
@@ -536,6 +550,7 @@ Based on root cause, apply appropriate fix:
    - Add to "Recent Healing Activities"
 
 **Verification Phase:**
+
 1. Run fixed test: `npm run test:headed`
 2. Verify test passes
 3. Run full suite: `npm test`
@@ -543,6 +558,7 @@ Based on root cause, apply appropriate fix:
 5. Check lint and type-check still pass
 
 **Exit Criteria:**
+
 - [ ] Test runs green
 - [ ] Root cause identified and documented
 - [ ] Fix applied and verified
@@ -550,22 +566,27 @@ Based on root cause, apply appropriate fix:
 - [ ] Vault/decision log updated if needed
 - [ ] No regressions introduced
 
-**Deliverable:** 
+**Deliverable:**
+
 - Fixed test
 - Documented failure pattern
 - Updated documentation
+
 ```
 
 ### **Healer → Git Commit Flow:**
 
 ```
+
 Activate **Git Commit Flow**.
 
 **Context:**
+
 - Read `.ai/1_CONTEXT/git_standards.md`
 - Healer Mode just completed
 
 **Pre-Commit Checklist:**
+
 - [ ] Fixed test now passing
 - [ ] Full test suite passing (no regressions)
 - [ ] Failure pattern documented
@@ -576,6 +597,7 @@ Activate **Git Commit Flow**.
 **Commit Scope:** [affected-area]
 
 **Task:**
+
 1. Stage changes: `git add .`
 2. Show `git diff --staged`
 3. Prepare healing commit message:
@@ -588,6 +610,7 @@ Activate **Git Commit Flow**.
 6. Update active_sprint.md
 
 **Deliverable:** Committed fix with full context
+
 ```
 
 **Example Healer Commit:**
@@ -685,9 +708,11 @@ Run these checks in order:
    ```
 
 2. **Show diff:**
+
    ```bash
    git diff --staged
    ```
+
    Present this to user for review
 
 3. **Determine commit type:**
@@ -706,6 +731,7 @@ Run these checks in order:
    - Footer with references
 
 5. **Show proposed commit:**
+
    ```
    I'm about to commit these changes:
    
@@ -723,17 +749,20 @@ Run these checks in order:
    ```
 
 6. **Execute commit (after approval):**
+
    ```bash
    git commit -m "[full message]"
    ```
 
 7. **Update active_sprint.md:**
    Add to Quick Reference section:
+
    ```markdown
    **Last Commit:** [short-hash] - [subject line]
    ```
 
 8. **Ask about push:**
+
    ```
    ✅ Committed successfully!
    Commit: [hash]
@@ -742,6 +771,7 @@ Run these checks in order:
    ```
 
 **Exit Criteria:**
+
 - [ ] All pre-commit checks passed
 - [ ] User reviewed and approved diff
 - [ ] Commit message follows standard
@@ -749,9 +779,11 @@ Run these checks in order:
 - [ ] Active sprint updated with commit reference
 - [ ] User decided on push (executed or noted for later)
 
-**Deliverable:** 
+**Deliverable:**
+
 - Clean commit in git history
 - Updated active sprint with commit reference
+
 ```
 
 ---
@@ -768,9 +800,11 @@ Run these checks in order:
 ### **Prompt Template:**
 
 ```
+
 Activate **Night Watchman Mode**.
 
 **Context:**
+
 - Read `.ai/2_PLANNING/active_sprint.md`
 
 **Task Checklist:**
@@ -780,6 +814,7 @@ Activate **Night Watchman Mode**.
 **Path:** `.ai/2_PLANNING/daily_logs/[YYYY-MM-DD].md`
 
 **Structure:**
+
 ```markdown
 # Daily Log: [Month Day, Year]
 
@@ -842,20 +877,24 @@ Activate **Night Watchman Mode**.
 **In active_sprint.md:**
 
 **REMOVE:**
+
 - All [x] completed tasks → Now in daily log
 - All content from "Notes" section → Now in daily log
 - "Recent Healing Activities" section → Now in daily log
 
 **KEEP:**
+
 - All [ ] pending tasks
 - Unresolved blockers
 - Sprint goal and status
 
 **ADD:**
+
 - New placeholder tasks for next session
 - Reference to today's log in "Last Completed Task"
 
 **UPDATE:**
+
 - "Last Completed Task" → "See .ai/2_PLANNING/daily_logs/[date].md"
 - "Next Session Focus" → First pending task or suggestion
 - "Quick Reference" section with last commit
@@ -865,6 +904,7 @@ Activate **Night Watchman Mode**.
 ### 3. Archive Old Logs (if needed)
 
 **If daily_logs/ has > 30 files:**
+
 ```bash
 mkdir -p .ai/2_PLANNING/daily_logs/archive_[YYYY_MM]
 mv .ai/2_PLANNING/daily_logs/[old-date]*.md .ai/2_PLANNING/daily_logs/archive_[YYYY_MM]/
@@ -873,11 +913,13 @@ mv .ai/2_PLANNING/daily_logs/[old-date]*.md .ai/2_PLANNING/daily_logs/archive_[Y
 ### 4. Token Health Check
 
 **Count lines:**
+
 ```bash
 wc -l .ai/2_PLANNING/active_sprint.md
 ```
 
 **Report:**
+
 - ✅ If < 50 lines: "Token count healthy"
 - ⚠️ If 50-100 lines: "Consider running Night Watchman more frequently"
 - ❌ If > 100 lines: "CRITICAL: Token bloat detected, archive needed"
@@ -885,6 +927,7 @@ wc -l .ai/2_PLANNING/active_sprint.md
 ### 5. Generate Rollover Report
 
 **Format:**
+
 ```
 Night Watchman Report 🌙
 
@@ -911,6 +954,7 @@ Ready for tomorrow! 🚀
 ```
 
 **Exit Criteria:**
+
 - [ ] Daily log created with all completed work
 - [ ] active_sprint.md cleaned (< 100 lines, ideally < 50)
 - [ ] Old logs archived (if needed)
@@ -918,22 +962,27 @@ Ready for tomorrow! 🚀
 - [ ] Rollover report generated
 - [ ] Sprint status updated
 
-**Deliverable:** 
+**Deliverable:**
+
 - Comprehensive daily log
 - Clean active sprint
 - Rollover report
+
 ```
 
 ### **Night Watchman → Git Commit Flow:**
 
 ```
+
 Activate **Git Commit Flow**.
 
 **Context:**
+
 - Night Watchman just completed
 - Session is ending
 
 **Pre-Commit Checklist:**
+
 - [ ] Daily log created
 - [ ] Active sprint cleaned
 - [ ] All previous work already committed
@@ -942,6 +991,7 @@ Activate **Git Commit Flow**.
 **Commit Scope:** planning
 
 **Task:**
+
 1. Stage: `git add .ai/2_PLANNING/`
 2. Show diff
 3. Prepare commit:
@@ -952,6 +1002,7 @@ Activate **Git Commit Flow**.
 5. Recommend: `git push` to preserve work
 
 **Deliverable:** Session properly closed and documented
+
 ```
 
 **Example Night Watchman Commit:**
@@ -993,12 +1044,14 @@ git push
 ### **Smoke Test Mode** 🔍
 
 **When to Use:**
+
 - Start of day (before Morning Ritual)
 - After deployments
 - Before major changes
 - Weekly health check
 
 **Prompt:**
+
 ```
 Activate **Smoke Test Mode**.
 
@@ -1019,11 +1072,13 @@ Activate **Smoke Test Mode**.
 ### **Archaeology Mode** 🏺
 
 **When to Use:**
+
 - Inheriting existing test suite
 - Auditing old tests
 - Migration planning
 
 **Prompt:**
+
 ```
 Activate **Archaeology Mode**.
 
@@ -1046,50 +1101,46 @@ Activate **Archaeology Mode**.
 
 ## 📊 **Workflow Decision Tree**
 
-```
-Session Start
-    ↓
-Morning Ritual
-    ↓
-Check Active Sprint
-    ↓
-┌─────────────────────────────────────┐
-│ What needs to be done?              │
-├─────────────────────────────────────┤
-│                                     │
-│ New page/feature?                   │
-│   → Cartographer Mode               │
-│        ↓                            │
-│      Git Commit (map)               │
-│        ↓                            │
-│      Architect Mode                 │
-│        ↓                            │
-│      Git Commit (feat)              │
-│                                     │
-│ Test failed?                        │
-│   → Healer Mode                     │
-│        ↓                            │
-│      Git Commit (heal)              │
-│                                     │
-│ Code improvement?                   │
-│   → Architect Mode (refactor)       │
-│        ↓                            │
-│      Git Commit (refactor)          │
-│                                     │
-│ Documentation?                      │
-│   → Update docs                     │
-│        ↓                            │
-│      Git Commit (docs)              │
-│                                     │
-└─────────────────────────────────────┘
-    ↓
-More work?
-    ├─ Yes → Back to decision tree
-    └─ No  → Night Watchman
-                ↓
-            Git Commit (docs)
-                ↓
-            Session End
+```mermaid
+graph TD
+    Start([Session Start]) --> MR[Morning Ritual]
+    MR --> Sprint[Check Active Sprint]
+    Sprint --> Decision{What needs to be done?}
+
+    %% New Feature Flow
+    Decision -->|New page/feature| Cart[Cartographer Mode]
+    Cart --> GitMap[Git Commit 'map']
+    GitMap --> Arch[Architect Mode]
+    Arch --> GitFeat[Git Commit 'feat']
+
+    %% Bug Fix Flow
+    Decision -->|Test failed| Heal[Healer Mode]
+    Heal --> GitHeal[Git Commit 'heal']
+
+    %% Refactor Flow
+    Decision -->|Code improvement| Refactor[Architect Mode - Refactor]
+    Refactor --> GitRef[Git Commit 'refactor']
+
+    %% Documentation Flow
+    Decision -->|Documentation| Docs[Update Docs]
+    Docs --> GitDocs[Git Commit 'docs']
+
+    %% Loop Check
+    GitFeat --> Loop{More work?}
+    GitHeal --> Loop
+    GitRef --> Loop
+    GitDocs --> Loop
+
+    Loop -->|Yes| Decision
+    Loop -->|No| NW[Night Watchman Mode]
+    NW --> GitEnd[Git Commit 'docs']
+    GitEnd --> End([Session End])
+
+    %% Styling
+    classDef mode fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef git fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    class Cart,Arch,Heal,Refactor,NW,MR mode;
+    class GitMap,GitFeat,GitHeal,GitRef,GitDocs,GitEnd git;
 ```
 
 ---
@@ -1128,18 +1179,21 @@ More work?
 Track these to ensure workflow is effective:
 
 ### Daily Metrics
+
 - **Phantom Selectors:** Target 0 (Cartographer verification working)
 - **Test Pass Rate:** Target >95% (Quality of implementation)
 - **Commit Frequency:** Target 3-5/session (Proper segmentation)
 - **Active Sprint Size:** Target <50 lines (Token management)
 
 ### Weekly Metrics
+
 - **Pages Automated:** Track growth
 - **Selector Stability:** Re-run old tests
 - **Failure Patterns:** Count unique patterns
 - **Decision Velocity:** ADs created per week
 
 ### Monthly Metrics
+
 - **Test Suite Size:** Total test count
 - **Coverage:** Features automated
 - **Healing Frequency:** How often tests break
@@ -1150,6 +1204,7 @@ Track these to ensure workflow is effective:
 ## 💡 **Best Practices**
 
 ### **Do's ✅**
+
 - ✅ Always run Morning Ritual at session start
 - ✅ Always use Cartographer before Architect
 - ✅ Always commit after each mode completes
@@ -1159,6 +1214,7 @@ Track these to ensure workflow is effective:
 - ✅ Always document failures (failure patterns)
 
 ### **Don'ts ❌**
+
 - ❌ Never write code without verifying selectors first
 - ❌ Never commit without running tests
 - ❌ Never skip mode phases
@@ -1211,6 +1267,7 @@ Ready to begin! 🚀
 ## 📚 **Additional Resources**
 
 **Related Files:**
+
 - `.ai/1_CONTEXT/mission.md` - Core principles
 - `.ai/1_CONTEXT/git_standards.md` - Commit message format
 - `.ai/1_CONTEXT/decision_log.md` - Architectural decisions
@@ -1218,6 +1275,7 @@ Ready to begin! 🚀
 - `.ai/3_MEMORY/failure_patterns.md` - Known issues
 
 **Git Commands:**
+
 ```bash
 # Start feature branch
 git checkout -b feat/feature-name

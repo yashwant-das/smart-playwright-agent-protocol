@@ -62,6 +62,7 @@ The scope should indicate what part of the system was affected:
 5. **Reference AD numbers** when relevant - `(AD-005)`
 
 **Good Examples:**
+
 ```
 feat(login): Add password visibility toggle
 heal(products): Fix flaky add-to-cart button (AD-012)
@@ -69,6 +70,7 @@ map(checkout): Complete payment form selectors
 ```
 
 **Bad Examples:**
+
 ```
 fixed stuff
 Updated the login page.
@@ -81,7 +83,8 @@ WIP
 
 For complex changes, structure the body with these sections:
 
-### For Feature Commits (feat/arch/map):
+### For Feature Commits (feat/arch/map)
+
 ```
 <Type>(<scope>): <subject>
 
@@ -100,7 +103,8 @@ Next: <what comes next>
 See: <reference to daily log or decision>
 ```
 
-### For Healing Commits (heal/fix):
+### For Healing Commits (heal/fix)
+
 ```
 <Type>(<scope>): <subject>
 
@@ -126,7 +130,8 @@ Status: <emoji> <status>
 See: <reference to .ai/1_CONTEXT/decision_log.md or .ai/3_MEMORY/failure_patterns.md>
 ```
 
-### For Refactoring Commits (refactor):
+### For Refactoring Commits (refactor)
+
 ```
 <Type>(<scope>): <subject>
 
@@ -150,7 +155,8 @@ Impact:
 
 Always include relevant references:
 
-### Reference Keywords:
+### Reference Keywords
+
 - `Refs:` - Related to (issue, AD, daily log)
 - `Closes:` - Fixes/completes (issue, task)
 - `See:` - More context available in
@@ -158,6 +164,7 @@ Always include relevant references:
 - `Breaking:` - Breaking change details
 
 **Examples:**
+
 ```
 Refs: AD-005, .ai/2_PLANNING/daily_logs/2026-01-10.md
 Closes: #42
@@ -169,6 +176,7 @@ See: .ai/3_MEMORY/failure_patterns.md (ESLint Config Conflict)
 ## Complete Examples
 
 ### Example 1: Feature Commit (Cartographer + Architect)
+
 ```
 feat(login): Complete SauceDemo login page automation
 
@@ -193,6 +201,7 @@ See: .ai/2_PLANNING/daily_logs/2026-01-10.md
 ```
 
 ### Example 2: Healing Commit
+
 ```
 heal(eslint): Resolve config conflict and migrate to .eslintrc.js (AD-005)
 
@@ -232,6 +241,7 @@ See: .ai/1_CONTEXT/decision_log.md, .ai/3_MEMORY/failure_patterns.md
 When the AI is ready to commit, it should follow this process:
 
 ### Step 1: Pre-Commit Checklist
+
 ```
 Before committing, verify:
 - [ ] All tests passing (npm test)
@@ -245,6 +255,7 @@ Before committing, verify:
 ```
 
 ### Step 2: Show Diff First
+
 ```
 AI should execute:
 git diff --staged
@@ -260,12 +271,14 @@ Type 'yes' to proceed or 'edit' to modify."
 ```
 
 ### Step 3: Commit Command
+
 ```
 git add .
 git commit -m "<full commit message>"
 ```
 
 ### Step 4: Confirmation
+
 ```
 "✅ Committed successfully!
 Commit hash: <hash>
@@ -334,7 +347,9 @@ Subject: <subject>
 
 **Diff:**
 ```
+
 [show git diff --staged]
+
 ```
 
 Do you approve this commit? (yes/no/edit)
