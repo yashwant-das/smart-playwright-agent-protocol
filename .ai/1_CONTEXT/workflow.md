@@ -7,7 +7,7 @@
 
 ---
 
-## 📋 **Overview: The 6-Phase Cycle**
+## 📋 **Overview: The 7-Phase Cycle**
 
 Every work session follows this cycle:
 
@@ -23,13 +23,15 @@ Every work session follows this cycle:
 5. Git Commit Flow (Documentation)
    ↓
 6. Night Watchman Mode (Shutdown)
+   ↓
+7. Continuous Modes (As Needed)
 ```
 
 **Key Principle:** Each phase has **clear entry criteria, tasks, and exit criteria**. Never skip phases.
 
 ---
 
-## 🌅 **Phase 0: Morning Ritual (Session Startup)**
+## 🌅 **Phase 1: Morning Ritual (Session Startup)**
 
 **When to Use:** Start of every work session
 
@@ -97,7 +99,7 @@ Target: https://www.saucedemo.com/inventory.html
 
 ---
 
-## 🟢 **Phase 1: Cartographer Mode (Discovery)**
+## 🟢 **Phase 2: Cartographer Mode (Discovery)**
 
 **When to Use:** 
 - Starting a new page/feature
@@ -233,7 +235,7 @@ See: .ai/3_MEMORY/selector_vault.md"
 
 ---
 
-## 🔵 **Phase 2: Architect Mode (Implementation)**
+## 🔵 **Phase 3: Architect Mode (Implementation)**
 
 **When to Use:** After Cartographer completes, ready to write code
 
@@ -419,7 +421,7 @@ See: .ai/2_PLANNING/active_sprint.md"
 
 ---
 
-## 🔴 **Phase 3: Healer Mode (Maintenance & Fixes)**
+## 🔴 **Phase 4: Healer Mode (Maintenance & Fixes)**
 
 **When to Use:** 
 - Test fails
@@ -631,7 +633,7 @@ See: .ai/1_CONTEXT/decision_log.md, .ai/3_MEMORY/failure_patterns.md"
 
 ---
 
-## 💾 **Phase 4: Git Commit Flow (Universal)**
+## 💾 **Phase 5: Git Commit Flow (Universal)**
 
 **When to Use:** After ANY mode completes work that changes files
 
@@ -754,7 +756,7 @@ Run these checks in order:
 
 ---
 
-## 🌙 **Phase 5: Night Watchman Mode (Session Shutdown)**
+## 🌙 **Phase 6: Night Watchman Mode (Session Shutdown)**
 
 **When to Use:** 
 - End of work session
@@ -986,7 +988,7 @@ git push
 
 ---
 
-## 🔄 **Phase 6: Continuous Modes (As Needed)**
+## 🔄 **Phase 7: Continuous Modes (As Needed)**
 
 ### **Smoke Test Mode** 🔍
 
