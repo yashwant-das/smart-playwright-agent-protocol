@@ -24,19 +24,19 @@ Unlike other frameworks where context is lost when the chat window closes, this 
 ```
 .ai/
 ├── 1_CONTEXT/           # 🛑 IMMUTABLE TRUTHS
-│   ├── mission.md       # The Agent's Prime Directives
-│   ├── decision_log.md  # Architectural Decision Records (ADR)
-│   └── tech_stack.md    # Approved tools & versions
+│   ├── [mission.md](.ai/1_CONTEXT/mission.md)       # The Agent's Prime Directives
+│   ├── [decision_log.md](.ai/1_CONTEXT/decision_log.md)  # Architectural Decision Records (ADR)
+│   └── [tech_stack.md](.ai/1_CONTEXT/tech_stack.md)    # Approved tools & versions
 │
 ├── 2_PLANNING/          # 🚧 WORKING MEMORY
-│   ├── active_sprint.md # Current context & todo list
+│   ├── [active_sprint.md](.ai/2_PLANNING/active_sprint.md) # Current context & todo list
 │   ├── maps/            # Visual UI maps (Screenshots)
 │   └── daily_logs/      # Session rollover history
 │
 └── 3_MEMORY/            # 🧠 LONG-TERM MEMORY
-├── selector_vault.md # Database of verified, working selectors
-├── failure_patterns.md # Library of known bugs & fixes
-└── lessons_learned.md # Strategic insights
+├── [selector_vault.md](.ai/3_MEMORY/selector_vault.md) # Database of verified, working selectors
+├── [failure_patterns.md](.ai/3_MEMORY/failure_patterns.md) # Library of known bugs & fixes
+└── [lessons_learned.md](.ai/3_MEMORY/lessons_learned.md) # Strategic insights
 ```
 
 ---
@@ -112,9 +112,9 @@ npm run mcp:start
 
 While other agents try to "guess" fixes, this protocol uses **Institutional Memory**:
 
-1. **Check:** Is the selector in `.ai/3_MEMORY/selector_vault.md`?
+1. **Check:** Is the selector in [`selector_vault.md`](.ai/3_MEMORY/selector_vault.md)?
 2. **Verify:** Use MCP to see if the element is still visible.
-3. **Reference:** Check `.ai/1_CONTEXT/decision_log.md` for architectural rules.
+3. **Reference:** Check [`decision_log.md`](.ai/1_CONTEXT/decision_log.md) for architectural rules.
 4. **Fix:** Update code + Update Vault + Log Failure Pattern.
 
 ---
