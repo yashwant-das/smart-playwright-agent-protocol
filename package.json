@@ -1,7 +1,7 @@
 {
-  "name": "smart-playwright-agent-framework",
+  "name": "smart-playwright-agent-protocol",
   "version": "1.0.0",
-  "description": "",
+  "description": "A strict Agentic Protocol and Memory System for Playwright. Uses MCP (Model Context Protocol) and a structured .ai/ filesystem to enforce architectural standards, self-healing, and institutional memory.",
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
@@ -15,7 +15,15 @@
     "type-check": "tsc --noEmit",
     "mcp:start": "npx -y @executeautomation/playwright-mcp-server"
   },
-  "keywords": [],
+  "keywords": [
+    "playwright",
+    "mcp-server",
+    "agentic-workflow",
+    "self-healing",
+    "qa-automation",
+    "sdet-agent",
+    "model-context-protocol"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
