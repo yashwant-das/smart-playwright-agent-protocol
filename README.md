@@ -3,6 +3,7 @@
 > **The Operating System for SDET Agents: MCP-Native, Memory-First, and Strictly Governed.**
 
 [![Playwright](https://img.shields.io/badge/Playwright-v1.57-green)](https://playwright.dev)
+[![Protocol](https://img.shields.io/badge/Protocol-v1.0.0-orange)](.ai/1_CONTEXT/workflow.md)
 [![MCP](https://img.shields.io/badge/Model%20Context%20Protocol-Enabled-blue)](https://modelcontextprotocol.io)
 [![Agentic Workflow](https://img.shields.io/badge/Agentic-Workflow-purple)](.ai/1_CONTEXT/workflow.md)
 
