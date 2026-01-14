@@ -1,88 +1,75 @@
-# Agentic QA Project v2.0
+# 🤖 Smart Playwright Agent Framework
+> **The Resilient Test Engine: AI-Native, Self-Healing, and Context-Aware.**
 
-This project uses the **Agentic QA Protocol** - an AI-driven, self-healing test automation framework.
+---
 
-## Quick Start
+## 🚀 Why We Built This
+Traditional test automation is often a "maintenance trap." Tests are fragile, selectors break with every UI change, and the context of *why* a test was written or *how* it should behave is often buried in old Jira tickets or outdated documentation.
 
-1. **Setup Complete** ✅ (You just ran the setup script)
-2. **Configure MCP:** See "MCP Configuration" section below
-3. **Run First Test:** `npm test`
+We built this framework to shift from **Traditional QA** (fragile scripts) to **Smart Playwright Agent**:
+- **Resilience over Rigidity:** Using AI to autonomously map and verify elements.
+- **Living Documentation:** The "Agent Brain" (`.ai/`) stores context, memory, and decisions.
+- **Self-Healing:** A dedicated mode for autonomous diagnosing and fixing of broken tests.
 
-## MCP Configuration
+---
 
-The AI agent needs MCP server access to "see" the browser. Configure for your IDE:
+## 🧠 The Smart Playwright Agent Protocol
+This framework is built around the **Smart Playwright Agent Protocol**, which treats the AI agent as a Senior QA Architect rather than just a script generator.
 
-### For Cursor
-Create/edit `~/.cursor/mcp.json`:
-```json
-{
-  "mcpServers": {
-    "playwright-community": {
-      "command": "npx",
-      "args": ["-y", "@executeautomation/playwright-mcp-server"]
-    }
-  }
-}
+### 🏠 The Agent Brain (`.ai/`)
+Everything the AI knows is stored here:
+- **[1_CONTEXT/](.ai/1_CONTEXT/)**: Immutable truths, tech stack standards, and the [mission.md](.ai/1_CONTEXT/mission.md).
+- **[2_PLANNING/](.ai/2_PLANNING/)**: Real-time coordination, [active_sprint.md](.ai/2_PLANNING/active_sprint.md), and UI maps.
+- **[3_MEMORY/](.ai/3_MEMORY/)**: Historical data, the [selector_vault.md](.ai/3_MEMORY/selector_vault.md), and failure patterns.
+
+---
+
+## 🔄 The 6-Phase Daily Workflow
+To maintain high hygiene and resilience, every session follows a strict cycle. The **Authoritative Guide** for this is [workflow.md](.ai/1_CONTEXT/workflow.md).
+
+```mermaid
+graph TD
+    A[Morning Ritual] --> B[Cartographer Mode]
+    B --> C[Architect Mode]
+    C --> D[Healer Mode]
+    D --> E[Git Commit Flow]
+    E --> F[Night Watchman]
 ```
 
-### For Windsurf
-Create/edit `~/.windsurf/mcp.json`:
-```json
-{
-  "mcpServers": {
-    "playwright-community": {
-      "command": "npx",
-      "args": ["-y", "@executeautomation/playwright-mcp-server"]
-    }
-  }
-}
+1.  **Morning Ritual** (Startup): Environment checks and context loading.
+2.  **Cartographer Mode** (Discovery): AI maps the UI and populates the [Selector Vault](.ai/3_MEMORY/selector_vault.md).
+3.  **Architect Mode** (Implementation): AI builds [Page Objects](pages/) and tests.
+4.  **Healer Mode** (Fixes): AI autonomously fixes failures and logs lessons.
+5.  **Git Commit Flow** (Documentation): Universal standards for high-hygiene commits.
+6.  **Night Watchman Mode** (Shutdown): Metrics logging and rollover planning.
+
+---
+
+## 🛠️ How to Use This Framework
+
+### 1. Setup
+Ensure your MCP server is configured for your IDE (see [workflow.md](.ai/1_CONTEXT/workflow.md#mcp-configuration) for details).
+
+```bash
+npm install
+npm install -y @executeautomation/playwright-mcp-server
 ```
 
-### For VS Code
-MCP support may vary. Check latest Anthropic documentation.
+### 2. Activate the Engine
+Do not start by writing code. Start by activating the **Agentic Protocol**:
 
-## Project Structure
+1.  **Prompt:** "Activate **Morning Ritual Mode**."
+2.  Follow the AI's lead as it executes the 6-phase cycle.
+3.  **Cartographer Mode Target:** Provide a URL, and watch the AI map the page.
+4.  **Architect Mode:** Tell the AI what you want to test (e.g., "Automate the cart flow").
 
-```
-.ai/                    # Agent Brain (DO NOT delete)
-├── 1_CONTEXT/         # Rules & Standards (READ-ONLY)
-├── 2_PLANNING/        # Active Work (READ-WRITE)
-└── 3_MEMORY/          # Validated Data (APPEND-ONLY)
-pages/                 # Page Object Models
-tests/                 # Test Specifications
-```
+---
 
-## Available Scripts
+## 📜 Key Documentation Links
+- **[Mission Statement](.ai/1_CONTEXT/mission.md)**: Core principles and role expectations.
+- **[Tech Stack Reference](.ai/1_CONTEXT/tech_stack.md)**: Details on TypeScript, Playwright, and linting standards.
+- **[Decision Log](.ai/1_CONTEXT/decision_log.md)**: Recorded architectural changes (ADRs).
+- **[Full Workflow Guide](.ai/1_CONTEXT/workflow.md)**: The detailed manual for the 6-phase cycle of the Smart Playwright Agent.
 
-- `npm test` - Run all tests
-- `npm run test:headed` - Run tests with browser visible
-- `npm run test:ui` - Run tests in Playwright UI mode
-- `npm run test:debug` - Run tests in debug mode
-- `npm run lint` - Check code quality
-- `npm run lint:fix` - Auto-fix linting issues
-
-## How to Use the Protocol
-
-See `.ai/1_CONTEXT/mission.md` for the full guide.
-
-**Quick workflow:**
-1. Tell AI: "Activate Cartographer Mode for [URL]"
-2. AI maps the page and populates selector vault
-3. Tell AI: "Activate Architect Mode"
-4. AI builds Page Objects and tests
-5. Run tests and iterate
-
-## Troubleshooting
-
-See `.ai/1_CONTEXT/troubleshooting.md` for common issues.
-
-**Quick fixes:**
-- MCP not working? Restart IDE completely
-- Tests failing? Run with `--headed` to watch
-- Selectors broken? Use Healer Mode
-
-## Next Steps
-
-1. Edit `.ai/2_PLANNING/active_sprint.md` with your target URL
-2. Tell your AI: "Activate Cartographer Mode"
-3. Watch the magic happen ✨
+---
+**Status:** 🟢 Framework Ready | **Version:** 2.0.0

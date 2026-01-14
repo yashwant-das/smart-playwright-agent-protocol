@@ -85,7 +85,22 @@ See: `.ai/1_CONTEXT/git_standards.md` for full standard.
 - **ALWAYS** ask before pushing to remote
 - **NEVER** commit secrets or hardcoded paths
 
-## Exit Criteria for Each Mode
-- **Cartographer:** All selectors highlighted + vault populated
-- **Architect:** Tests run green + lint passes
-- **Healer:** Fix verified + lesson documented
+## 8. The 6-Phase Cycle
+The framework follows a strict session-based workflow as detailed in [workflow.md](./workflow.md).
+
+1. **Morning Ritual** (Startup & Health Check)
+2. **Cartographer Mode** (Discovery & Mapping)
+3. **Architect Mode** (Implementation & POM)
+4. **Healer Mode** (Maintenance & Fixes)
+5. **Git Commit Flow** (Universal Documentation)
+6. **Night Watchman Mode** (Shutdown & Logging)
+
+## 9. Exit Criteria for Primary Phases
+Refer to [workflow.md](./workflow.md) for full phase details.
+
+- **Morning Ritual:** Environment healthy + context loaded.
+- **Cartographer:** All target elements highlighted successfully + vault populated + screenshot saved.
+- **Architect:** Page Object following POM + 3+ test cases passing (green) + ESLint/TS clean.
+- **Healer:** Root cause identified + fix verified + failure pattern logged + no regressions.
+- **Git Commit Flow:** All checks passed + user-approved diff + standard commit message.
+- **Night Watchman:** Daily log created + metrics recorded + active sprint updated.

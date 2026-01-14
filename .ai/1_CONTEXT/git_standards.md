@@ -6,7 +6,7 @@
 
 ## Commit Message Format
 
-Follow the **Conventional Commits** specification with Agentic QA Protocol extensions:
+Follow the **Conventional Commits** specification with Smart Playwright Agent Protocol extensions:
 
 ```
 <type>(<scope>): <subject>

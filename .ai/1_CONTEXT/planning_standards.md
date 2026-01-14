@@ -1,4 +1,4 @@
-# Planning Directory Guide
+# Planning Standards
 
 ## File Lifecycle
 

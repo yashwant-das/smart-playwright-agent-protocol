@@ -33,7 +33,7 @@
 
 ## File Structure
 ```
-agentic-qa-v2/
+smart-playwright-agent-framework/
 ├── .ai/                    # Agent Brain
 │   ├── 1_CONTEXT/         # Static rules (READ-ONLY)
 │   ├── 2_PLANNING/        # Active work (READ-WRITE)
