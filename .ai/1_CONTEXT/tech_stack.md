@@ -4,7 +4,7 @@
 
 - **Test Runner:** Playwright Test (TypeScript)
 - **Language:** TypeScript 5.x
-- **Node Version:** 18+ (LTS)
+- **Node Version:** 22+ (LTS recommended)
 
 ## AI Agent Vision
 

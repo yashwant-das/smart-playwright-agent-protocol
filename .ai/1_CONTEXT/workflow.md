@@ -1,4 +1,4 @@
-# 🔄 The Daily Workflow (The "Engine")
+# The Daily Workflow (The "Engine")
 
 **Version:** 1.0.0 (Protocol)
 **Status:** 🟢 Production-Ready
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 **Overview: The 7-Phase Cycle**
+## **Overview: The 7-Phase Cycle**
 
 Every work session follows this cycle:
 
@@ -27,7 +27,7 @@ graph TD
 
 ---
 
-## 🌅 **Phase 1: Morning Ritual (Session Startup)**
+## **Phase 1: Morning Ritual (Session Startup)**
 
 **When to Use:** Start of every work session
 
@@ -95,7 +95,7 @@ Target: https://www.saucedemo.com/inventory.html
 
 ---
 
-## 🟢 **Phase 2: Cartographer Mode (Discovery)**
+## **Phase 2: Cartographer Mode (Discovery)**
 
 **When to Use:**
 
@@ -232,7 +232,7 @@ See: .ai/3_MEMORY/selector_vault.md"
 
 ---
 
-## 🔵 **Phase 3: Architect Mode (Implementation)**
+## **Phase 3: Architect Mode (Implementation)**
 
 **When to Use:** After Cartographer completes, ready to write code
 
@@ -433,7 +433,7 @@ See: .ai/2_PLANNING/active_sprint.md"
 
 ---
 
-## 🔴 **Phase 4: Healer Mode (Maintenance & Fixes)**
+## **Phase 4: Healer Mode (Maintenance & Fixes)**
 
 **When to Use:**
 
@@ -655,7 +655,7 @@ See: .ai/1_CONTEXT/decision_log.md, .ai/3_MEMORY/failure_patterns.md"
 
 ---
 
-## 💾 **Phase 5: Git Commit Flow (Universal)**
+## **Phase 5: Git Commit Flow (Universal)**
 
 **When to Use:** After ANY mode completes work that changes files
 
@@ -787,7 +787,7 @@ Run these checks in order:
 
 ---
 
-## 🌙 **Phase 6: Night Watchman Mode (Session Shutdown)**
+## **Phase 6: Night Watchman Mode (Session Shutdown)**
 
 **When to Use:** 
 - End of work session
@@ -928,7 +928,7 @@ wc -l .ai/2_PLANNING/active_sprint.md
 **Format:**
 
 ```
-Night Watchman Report 🌙
+Night Watchman Report
 
 Completed Today:
 - [X] tasks completed
@@ -949,7 +949,7 @@ Next Session:
 - Estimated effort: [time]
 - Blockers: [none/list]
 
-Ready for tomorrow! 🚀
+Ready for tomorrow!
 ```
 
 **Exit Criteria:**
@@ -1038,9 +1038,9 @@ git push
 
 ---
 
-## 🔄 **Phase 7: Continuous Modes (As Needed)**
+## **Phase 7: Continuous Modes (As Needed)**
 
-### **Smoke Test Mode** 🔍
+### **Smoke Test Mode**
 
 **When to Use:**
 
@@ -1068,7 +1068,7 @@ Activate **Smoke Test Mode**.
 **Deliverable:** Selector health report
 ```
 
-### **Archaeology Mode** 🏺
+### **Archaeology Mode**
 
 **When to Use:**
 
@@ -1098,7 +1098,7 @@ Activate **Archaeology Mode**.
 
 ---
 
-## 📊 **Workflow Decision Tree**
+## **Workflow Decision Tree**
 
 ```mermaid
 graph TD
@@ -1144,7 +1144,7 @@ graph TD
 
 ---
 
-## ⚡ **Quick Reference Card**
+## **Quick Reference Card**
 
 ### **Mode Selection Guide**
 
@@ -1173,7 +1173,7 @@ graph TD
 
 ---
 
-## 🎯 **Success Metrics**
+## **Success Metrics**
 
 Track these to ensure workflow is effective:
 
@@ -1200,7 +1200,7 @@ Track these to ensure workflow is effective:
 
 ---
 
-## 💡 **Best Practices**
+## **Best Practices**
 
 ### **Do's ✅**
 
@@ -1224,7 +1224,7 @@ Track these to ensure workflow is effective:
 
 ---
 
-## 🚀 **Universal Workflow Template**
+## **Universal Workflow Template**
 
 **Copy this into your AI chat at the start of any session:**
 
@@ -1258,12 +1258,12 @@ Start new work session following the Daily Workflow protocol.
 - Commit documentation
 - Push to remote
 
-Ready to begin! 🚀
+Ready to begin!
 ```
 
 ---
 
-## 📚 **Additional Resources**
+## **Additional Resources**
 
 **Related Files:**
 

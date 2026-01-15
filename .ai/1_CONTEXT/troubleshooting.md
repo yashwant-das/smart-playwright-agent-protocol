@@ -14,7 +14,7 @@ npx -y @executeautomation/playwright-mcp-server
 
 **Solutions:**
 
-1. Check Node version (must be 18+): `node --version`
+1. Check Node version (must be 22+): `node --version`
 2. Clear npm cache: `npm cache clean --force`
 3. Reinstall: `npm install -D @executeautomation/playwright-mcp-server`
 4. Restart IDE

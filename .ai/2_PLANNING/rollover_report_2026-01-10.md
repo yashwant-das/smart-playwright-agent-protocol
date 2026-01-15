@@ -1,6 +1,6 @@
 # Rollover Report: 2026-01-10
 
-## 📊 Today's Achievements Summary
+## Today's Achievements Summary
 
 ### Completed Phases
 
@@ -28,7 +28,7 @@
 
 ---
 
-## 🏥 Token Health Check
+## Token Health Check
 
 **active_sprint.md Status:** ✅ Healthy
 
@@ -45,7 +45,7 @@
 
 ---
 
-## 🎯 Suggested Next Steps
+## Suggested Next Steps
 
 ### High Priority
 
@@ -80,7 +80,7 @@
 
 ---
 
-## 📝 Sprint Status
+## Sprint Status
 
 **Current Status:** 🟢 In Progress
 **Sprint Goal:** Automate SauceDemo login flow with self-healing tests
@@ -90,7 +90,7 @@
 
 ---
 
-## 🔍 Quality Metrics
+## Quality Metrics
 
 - **Test Pass Rate:** 100% (3/3 tests passing)
 - **Code Quality:** ESLint 0 errors, TypeScript successful

@@ -1,4 +1,4 @@
-# 🧠 Smart Playwright Agent Protocol
+# Smart Playwright Agent Protocol
 >
 > **The Operating System for SDET Agents: MCP-Native, Memory-First, and Strictly Governed.**
 
@@ -9,7 +9,7 @@
 
 ---
 
-## ⚡ Core Philosophy: Protocol over Prompting
+## Core Philosophy: Protocol over Prompting
 
 Most AI coding assistants are "fire and forget"—they generate code, but they don't know *why* they wrote it, nor do they remember it later.
 
@@ -21,7 +21,7 @@ Most AI coding assistants are "fire and forget"—they generate code, but they d
 
 ---
 
-## 🏗️ The Agent "Brain" Structure (`.ai/`)
+## The Agent "Brain" Structure (`.ai/`)
 
 Unlike other frameworks where context is lost when the chat window closes, this framework maintains a persistent memory on disk.
 
@@ -42,7 +42,7 @@ Unlike other frameworks where context is lost when the chat window closes, this 
 
 ---
 
-## 🔌 Powered by MCP (Model Context Protocol)
+## Powered by MCP (Model Context Protocol)
 
 This framework leverages the **`@executeautomation/playwright-mcp-server`** to give the AI direct, tools-based access to the browser.
 
@@ -54,45 +54,45 @@ Instead of hallucinating selectors, the Agent executes tools:
 
 ---
 
-## 🔄 The 7-Phase Daily Workflow
+## The 7-Phase Daily Workflow
 
 We treat AI interaction as a disciplined software development lifecycle, not a chat. (See [Full Workflow](.ai/1_CONTEXT/workflow.md))
 
-### 🌅 **Phase 1: Morning Ritual (Session Startup)**
+### **Phase 1: Morning Ritual (Session Startup)**
 
 **"Context Loading."** The Agent reads the [`active_sprint.md`](.ai/2_PLANNING/active_sprint.md) and checks environment health before accepting tasks.
 
-### 🟢 **Phase 2: Cartographer Mode (Discovery)**
+### **Phase 2: Cartographer Mode (Discovery)**
 
 **"Map before you build."** The Agent explores the UI, highlights elements via MCP, and populates the [`selector_vault.md`](.ai/3_MEMORY/selector_vault.md). No code is written yet—only verification.
 
-### 🔵 **Phase 3: Architect Mode (Implementation)**
+### **Phase 3: Architect Mode (Implementation)**
 
 **"Strict Construction."** The Agent generates Page Objects and Tests, but it is **only** allowed to use selectors present in the Vault. This prevents "hallucinated" locators.
 
-### 🔴 **Phase 4: Healer Mode (Maintenance & Fixes)**
+### **Phase 4: Healer Mode (Maintenance & Fixes)**
 
 **"Root Cause Analysis."** If a test fails, the Agent consults [`failure_patterns.md`](.ai/3_MEMORY/failure_patterns.md) to see if this is a known issue before attempting a hot-fix.
 
-### 💾 **Phase 5: Git Commit Flow (Universal)**
+### **Phase 5: Git Commit Flow (Universal)**
 
 **"Hygiene & Standards."** The Agent follows a strict Conventional Commits standard (`feat`, `map`, `heal`), ensuring the git history tells a story.
 
-### 🌙 **Phase 6: Night Watchman Mode (Session Shutdown)**
+### **Phase 6: Night Watchman Mode (Session Shutdown)**
 
 **"Rollover."** The Agent summarizes the session, updates the logs, and cleans the active sprint file to save context tokens for the next run.
 
-### 🔄 **Phase 7: Continuous Modes (As Needed)**
+### **Phase 7: Continuous Modes (As Needed)**
 
 **"On Demand."** Specialized modes like **Smoke Test Mode** (Quick Health Check) and **Archaeology Mode** (Legacy Code Analysis) that can be triggered simply by asking.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22+ (LTS recommended)
 - An MCP-compatible IDE (Cursor, Windsurf) or Agent Client.
 
 ### Installation
@@ -126,7 +126,7 @@ npm run mcp:start
 
 ---
 
-## 🛡️ "Self-Healing" vs. "Self-Correction"
+## "Self-Healing" vs. "Self-Correction"
 
 While other agents try to "guess" fixes, this protocol uses **Institutional Memory**:
 
@@ -137,5 +137,5 @@ While other agents try to "guess" fixes, this protocol uses **Institutional Memo
 
 ---
 
-**Status:** 🟢 Production Ready Protocol
+**Status:** Production Ready Protocol
 **Current Version:** 2.0.0
