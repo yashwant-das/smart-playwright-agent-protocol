@@ -12,6 +12,21 @@
 - **Capabilities:** navigate, click, fill, screenshot, evaluate, highlight
 - **Why Community Edition:** Supports element highlighting (critical for verification)
 
+### Client Configuration (example for Cursor)
+
+Add the following to your Cursor MCP settings:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"]
+    }
+  }
+}
+```
+
 ## Code Quality Tools
 
 - **Linter:** ESLint 9.x

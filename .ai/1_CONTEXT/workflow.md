@@ -24,6 +24,7 @@ graph TD
 ```
 
 **Key Principle:** Each phase has **clear entry criteria, tasks, and exit criteria**. Never skip phases.
+**Client Note:** The protocol is **client-agnostic**. Whether you use Cursor, Claude Desktop, or a CLI agent, the 7-phase cycle remains the same as long as the MCP server is active and accessible.
 
 ---
 
