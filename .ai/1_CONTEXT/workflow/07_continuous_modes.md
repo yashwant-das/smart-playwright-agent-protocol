@@ -92,11 +92,11 @@ Choose 5-10 selectors from different pages:
 
 ```markdown
 Selected for Smoke Test:
-1. Login | UsernameField | #user-name
-2. Login | LoginButton | #login-button
-3. Products | ProductGrid | .inventory_list
-4. Products | AddToCart | button[data-test*="add-to-cart"]
-5. Cart | CheckoutButton | #checkout
+- Login | UsernameField | #user-name
+- Login | LoginButton | #login-button
+- Products | ProductGrid | .inventory_list
+- Products | AddToCart | button[data-test*="add-to-cart"]
+- Cart | CheckoutButton | #checkout
 ```
 
 **Selection Criteria:**
@@ -151,7 +151,7 @@ Health: 80%
 
 Failures Requiring Attention:
 -----------------------------
-1. Cart | CheckoutButton | #checkout
+- Cart | CheckoutButton | #checkout
    - Action: Activate Healer Mode
    - Priority: High
 
@@ -373,19 +373,19 @@ Date: 2026-01-15
 | Selectors in vault | [FAIL] - 8 missing |
 | isLoaded() methods | [WARN] - 1 missing |
 
-## Critical Issues
+Critical Issues:
+-----------------------------
+- **CartPage.ts** - Does not extend BasePage
+- **products.spec.ts** - Contains raw locators
+- **Selector vault** - 8 selectors not documented
+- **XPath usage** - 1 XPath selector found
 
-1. **CartPage.ts** - Does not extend BasePage
-2. **products.spec.ts** - Contains raw locators
-3. **Selector vault** - 8 selectors not documented
-4. **XPath usage** - 1 XPath selector found
-
-## Recommendations
-
-1. Refactor CartPage to extend BasePage
-2. Move raw locators from products.spec to ProductsPage
-3. Run Cartographer Mode to verify and document missing selectors
-4. Replace XPath with data-testid
+Recommendations:
+-----------------------------
+- Refactor CartPage to extend BasePage
+- Move raw locators from products.spec to ProductsPage
+- Run Cartographer Mode to verify and document missing selectors
+- Replace XPath with data-testid
 ```
 
 ---
