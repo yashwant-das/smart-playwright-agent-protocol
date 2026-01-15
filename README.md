@@ -1,5 +1,5 @@
 # Smart Playwright Agent Protocol
->
+
 > **The Operating System for SDET Agents: MCP-Native, Memory-First, and Strictly Governed.**
 
 [![Playwright](https://img.shields.io/badge/Playwright-v1.57-green)](https://playwright.dev)
@@ -146,4 +146,4 @@ While other agents try to "guess" fixes, this protocol uses **Institutional Memo
 ---
 
 **Status:** Production Ready Protocol
-**Current Version:** 2.0.0
+**Current Version:** 1.0.0

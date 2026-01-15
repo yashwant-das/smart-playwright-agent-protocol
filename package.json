@@ -11,8 +11,8 @@
     "test:report": "playwright show-report",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
-    "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\"",
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.ai/1_CONTEXT/prompts\" \"#universal_daily_workflow.md\"",
+    "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\" \"#.ai/1_CONTEXT/prompts\" \"#universal_daily_workflow.md\"",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "mcp:start": "npx -y @executeautomation/playwright-mcp-server"

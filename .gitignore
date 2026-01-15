@@ -65,3 +65,4 @@ Thumbs.db
 
 # Don't commit temp notes/scratches
 .ai/2_PLANNING/scratch.md
+lint_output.txt
