@@ -10,17 +10,41 @@
 
 Every work session follows this cycle:
 
+1. Morning Ritual (Startup)
+   ↓
+2. Cartographer Mode (Discovery)
+   ↓
+3. Architect Mode (Implementation)
+   ↓
+4. Healer Mode (Fixes)
+   ↓
+5. Git Commit Flow (Documentation)
+   ↓
+6. Night Watchman Mode (Shutdown)
+   ↓
+7. Continuous Modes (On Demand)
+
 ```mermaid
 graph TD
-    P1[1. Morning Ritual<br/><i>Startup</i>] --> P2[2. Cartographer Mode<br/><i>Discovery</i>]
-    P2 --> P3[3. Architect Mode<br/><i>Implementation</i>]
-    P3 --> P4[4. Healer Mode<br/><i>Fixes</i>]
-    P4 --> P5[5. Git Commit Flow<br/><i>Documentation</i>]
-    P5 --> P6[6. Night Watchman Mode<br/><i>Shutdown</i>]
-    P6 -.-> P7[7. Continuous Modes<br/><i>As Needed</i>]
+    Start([Session Start]) --> MR["Morning Ritual"]
+    MR --> Decision{Action?}
+    
+    Decision -->|New Code| Cart["Cartographer"]
+    Cart --> Arch["Architect"]
+    Arch --> Heal["Healer"]
+    Heal --> Git["Git Commit"]
+    
+    Decision -->|Fix| Heal
+    
+    Git --> Loop{More Work?}
+    Loop -->|Yes| Decision
+    Loop -->|No| NW["Night Watchman"]
+    NW --> End([Session End])
+    
+    NW -.-> Cont["Continuous Modes"]
 
     classDef phase fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
-    class P1,P2,P3,P4,P5,P6,P7 phase;
+    class MR,Cart,Arch,Heal,Git,NW,Cont phase;
 ```
 
 **Key Principle:** Each phase has **clear entry criteria, tasks, and exit criteria**. Never skip phases.
@@ -34,9 +58,9 @@ graph TD
 
 **Duration:** 2-5 minutes
 
-### **Prompt Template:**
+#### **Prompt Template:**
 
-```
+````
 Activate **Morning Ritual Mode**.
 
 **Tasks:**
@@ -69,7 +93,7 @@ Activate **Morning Ritual Mode**.
 - [ ] Ready to choose next mode
 
 **Deliverable:** Status report + recommendation for which mode to activate next
-```
+````
 
 ### **Expected Output:**
 
@@ -106,9 +130,9 @@ Target: https://www.saucedemo.com/inventory.html
 
 **Duration:** 10-20 minutes per page
 
-### **Prompt Template:**
+#### **Prompt Template:**
 
-```
+````
 Activate **Cartographer Mode**.
 
 **Context:** 
@@ -168,7 +192,7 @@ Activate **Cartographer Mode**.
 - Updated active sprint
 
 **IMPORTANT:** Use MCP tools to actually interact with the browser. Verify visually.
-```
+````
 
 ### **Cartographer → Git Commit Flow:**
 
@@ -239,9 +263,9 @@ See: .ai/3_MEMORY/selector_vault.md"
 
 **Duration:** 20-40 minutes per page
 
-### **Prompt Template:**
+#### **Prompt Template:**
 
-```
+````
 Activate **Architect Mode**.
 
 **Context:**
@@ -287,7 +311,6 @@ export class [PageName]Page extends BasePage {
 ```
 
 ### 2. Create Test Spec
-
 **Location:** `tests/[feature-name].spec.ts`
 
 **Requirements:**
@@ -362,8 +385,7 @@ Execute in order:
 - Updated active sprint
 
 **CRITICAL:** If any test fails, STOP and activate Healer Mode immediately.
-
-```
+`````
 
 ### **Architect → Git Commit Flow:**
 
@@ -445,9 +467,9 @@ See: .ai/2_PLANNING/active_sprint.md"
 
 **Duration:** 10-30 minutes depending on complexity
 
-### **Prompt Template:**
+#### **Prompt Template:**
 
-```
+````
 Activate **Healer Mode**.
 
 **Issue Description:**
@@ -550,7 +572,6 @@ Based on root cause, apply appropriate fix:
    - Add to "Recent Healing Activities"
 
 **Verification Phase:**
-
 1. Run fixed test: `npm run test:headed`
 2. Verify test passes
 3. Run full suite: `npm test`
@@ -566,13 +587,12 @@ Based on root cause, apply appropriate fix:
 - [ ] Vault/decision log updated if needed
 - [ ] No regressions introduced
 
-**Deliverable:**
+**Deliverable:** 
 
 - Fixed test
 - Documented failure pattern
 - Updated documentation
-
-```
+````
 
 ### **Healer → Git Commit Flow:**
 
@@ -662,9 +682,9 @@ See: .ai/1_CONTEXT/decision_log.md, .ai/3_MEMORY/failure_patterns.md"
 
 **Duration:** 3-5 minutes
 
-### **Universal Commit Prompt:**
+#### **Prompt Template:**
 
-```
+````
 Activate **Git Commit Flow**.
 
 **Context:**
@@ -708,11 +728,9 @@ Run these checks in order:
    ```
 
 2. **Show diff:**
-
    ```bash
    git diff --staged
    ```
-
    Present this to user for review
 
 3. **Determine commit type:**
@@ -731,7 +749,6 @@ Run these checks in order:
    - Footer with references
 
 5. **Show proposed commit:**
-
    ```
    I'm about to commit these changes:
    
@@ -749,20 +766,17 @@ Run these checks in order:
    ```
 
 6. **Execute commit (after approval):**
-
    ```bash
    git commit -m "[full message]"
    ```
 
 7. **Update active_sprint.md:**
    Add to Quick Reference section:
-
    ```markdown
    **Last Commit:** [short-hash] - [subject line]
    ```
 
 8. **Ask about push:**
-
    ```
    ✅ Committed successfully!
    Commit: [hash]
@@ -771,7 +785,6 @@ Run these checks in order:
    ```
 
 **Exit Criteria:**
-
 - [ ] All pre-commit checks passed
 - [ ] User reviewed and approved diff
 - [ ] Commit message follows standard
@@ -779,12 +792,10 @@ Run these checks in order:
 - [ ] Active sprint updated with commit reference
 - [ ] User decided on push (executed or noted for later)
 
-**Deliverable:**
-
+**Deliverable:** 
 - Clean commit in git history
 - Updated active sprint with commit reference
-
-```
+````
 
 ---
 
@@ -815,13 +826,13 @@ Activate **Night Watchman Mode**.
 
 **Structure:**
 
-```markdown
+````markdown
 # Daily Log: [Month Day, Year]
 
-## Summary: What was accomplished today
+#### **Summary: What was accomplished today**
 [2-3 sentence summary of the session]
 
-## Metrics
+#### **Metrics**
 - **Pages Mapped:** [count]
 - **Selectors Verified:** [count]
 - **Page Objects Created:** [count]
@@ -831,13 +842,13 @@ Activate **Night Watchman Mode**.
 - **Architectural Decisions:** [count]
 - **Code Quality:** [ESLint/TypeScript status]
 
-## Phase 1: Discovery (Cartographer Mode)
+#### **Phase 1: Discovery (Cartographer Mode)**
 [Extract all completed [x] Cartographer tasks from active_sprint.md]
 
 **Selectors Added:**
 [List new vault entries]
 
-## Phase 2: Implementation (Architect Mode)
+#### **Phase 2: Implementation (Architect Mode)**
 [Extract all completed [x] Architect tasks from active_sprint.md]
 
 **Files Created:**
@@ -846,19 +857,19 @@ Activate **Night Watchman Mode**.
 **Test Cases:**
 [List test descriptions]
 
-## Phase 3: Validation
+#### **Phase 3: Validation**
 [Extract validation results]
 
-## Healing Activities (if any)
+#### **Healing Activities (if any)**
 [Extract from "Recent Healing Activities" section]
 
-## Technical Notes
+#### **Technical Notes**
 [Extract from "Notes" section - observations about the system]
 
-## Decisions Made
+#### **Decisions Made**
 [Reference any AD entries created today]
 
-## Next Session Planning
+#### **Next Session Planning**
 **Suggested Next Steps:**
 1. [Most logical next task]
 2. [Alternative task]
@@ -870,7 +881,7 @@ Activate **Night Watchman Mode**.
 **Session Duration:** [hours]
 **Overall Status:** [emoji] [status description]
 **Team Velocity:** [tests/session, pages/session]
-```
+````
 
 ### 2. Clean Active Sprint
 
@@ -1050,9 +1061,9 @@ git push
 - Before major changes
 - Weekly health check
 
-**Prompt:**
+#### **Prompt:**
 
-```
+````
 Activate **Smoke Test Mode**.
 
 **Context:**
@@ -1067,7 +1078,7 @@ Activate **Smoke Test Mode**.
 6. If failures → Flag for Healer Mode
 
 **Deliverable:** Selector health report
-```
+````
 
 ### **Archaeology Mode**
 
@@ -1077,9 +1088,9 @@ Activate **Smoke Test Mode**.
 - Auditing old tests
 - Migration planning
 
-**Prompt:**
+#### **Prompt:**
 
-```
+````
 Activate **Archaeology Mode**.
 
 **Context:**
@@ -1095,7 +1106,7 @@ Activate **Archaeology Mode**.
 7. Create migration plan
 
 **Deliverable:** Audit report + migration plan
-```
+````
 
 ---
 
@@ -1225,11 +1236,11 @@ Track these to ensure workflow is effective:
 
 ---
 
-## **Universal Workflow Template**
+#### **Universal Workflow Template**
 
 **Copy this into your AI chat at the start of any session:**
 
-```
+````
 Start new work session following the Daily Workflow protocol.
 
 **Step 1:** Activate Morning Ritual
@@ -1260,7 +1271,7 @@ Start new work session following the Daily Workflow protocol.
 - Push to remote
 
 Ready to begin!
-```
+````
 
 ---
 

@@ -124,6 +124,14 @@ npm run mcp:start
 
 > "Activate **Architect Mode**. Create a Page Object for Checkout using the selectors from the Vault."
 
+4. **Commit Documentation:**
+
+> "Activate **Git Commit Flow**. Stage the new checkout files and prepare a `feat` commit."
+
+5. **End the Session:**
+
+> "Activate **Night Watchman Mode**. Roll over the active sprint to a new daily log."
+
 ---
 
 ## "Self-Healing" vs. "Self-Correction"
