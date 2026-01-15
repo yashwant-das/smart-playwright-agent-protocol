@@ -36,25 +36,24 @@ flowchart TD
 Activate **Morning Ritual Mode**.
 
 **Tasks:**
-
 1. Run environment health check:
    - Execute `npm test` to verify baseline
    - Execute `npm run lint` to check code quality
      - If errors: Run `npm run lint:fix` to auto-fix, then check again
    - Execute `npm run type-check` to verify TypeScript
    - Check git status: `git status`
-
+   
 2. Review context:
    - Read `.ai/2_PLANNING/active_sprint.md`
    - Check "Last Completed Task" and "Next Session Focus"
    - Review any blockers
-
+   
 3. Activate Smoke Test (optional but recommended):
    - Read `.ai/3_MEMORY/selector_vault.md`
    - Pick 3-5 random selectors from different pages
    - Use MCP to verify they still work
    - Report health status
-
+   
 4. Check for updates:
    - Any new daily logs since last session?
    - Any new decisions in decision_log.md?
@@ -197,7 +196,8 @@ git diff HEAD~1 .ai/1_CONTEXT/decision_log.md 2>/dev/null || echo "No recent cha
 
 **Questions to Answer:**
 
-- Were there commits from other team members?
+- Any new daily logs since last session?
+- Any new decisions in decision_log.md?
 - Any new failure patterns documented?
 - Any new architectural decisions made?
 - Any urgent blockers noted?
