@@ -145,5 +145,6 @@ While other agents try to "guess" fixes, this protocol uses **Institutional Memo
 
 ---
 
-**Status:** Production Ready Protocol
-**Current Version:** 1.0.0
+### ⚠️ **Status: Release Candidate (v1.0.0)**
+
+*This protocol is currently in a pre-release phase. All specifications and features are subject to change.*

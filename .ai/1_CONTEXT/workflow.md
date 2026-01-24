@@ -1,7 +1,6 @@
 # The Daily Workflow (The "Engine")
 
 **Version:** 1.0.0 (Protocol)
-**Status:** Production-Ready
 **Purpose:** A comprehensive, mode-based workflow that integrates AI-driven QA automation with proper Git hygiene and documentation.
 
 ---
