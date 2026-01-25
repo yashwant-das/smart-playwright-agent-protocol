@@ -1,12 +1,12 @@
 ---
-id: "T-005"
+id: "T-010"
 title: "Verify External Contact Form"
-status: "DONE"
+status: "BLOCKED"
 owner: "AI"
 priority: "High"
 ---
 
-T-005: Verify External Contact Form
+T-010: Verify External Contact Form
 
 ## Objective
 

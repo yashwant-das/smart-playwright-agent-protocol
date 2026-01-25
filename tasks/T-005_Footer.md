@@ -1,12 +1,12 @@
 ---
-id: "T-010"
+id: "T-005"
 title: "Verify Footer Social Links"
 status: "TODO"
 owner: "AI"
 priority: "Medium"
 ---
 
-T-010: Verify Footer Social Links
+T-005: Verify Footer Social Links
 
 ## Objective
 

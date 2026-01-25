@@ -1,7 +1,46 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 import fm from 'front-matter';
+
+const LOG_DIR = path.join(process.cwd(), 'logs');
+if (!fs.existsSync(LOG_DIR)) { fs.mkdirSync(LOG_DIR); }
+const LOG_FILE = path.join(LOG_DIR, 'last_run.log');
+
+const MESSAGES = {
+    ACTIVATING: (id: string, title: string) => `\n🤖 [${id}] ACTIVATING TASK: ${title}`,
+    TODO_MOVING: (id: string) => `📝 [${id}] Status is TODO. Moving to IN_PROGRESS...`,
+    NEXT_STEP_PROMPT: `\n👉 NEXT STEP: Copy/Paste this to your AI Assistant:\n`,
+    AI_PROMPT_IMPLEMENT: (id: string) => `  "Task ${id} is now IN_PROGRESS. Read AGENTS.md for protocol rules, then implement the plan."\n`,
+    STATUS_VERIFYING: (id: string, status: string) => `🕵️  [${id}] Status is ${status}. Running Verification...`,
+    TEST_RUNNING: (id: string, file: string) => `🧪 [${id}] Running specific test: ${file}`,
+    VERIFICATION_PASSED: (id: string) => `✅ [${id}] Verification Passed. Moving to DONE.`,
+    DONE_REVERIFYING: (id: string) => `🔁 [${id}] Status is DONE. Re-verifying...`,
+    DONE_REVERIFIED: (id: string) => `✅ [${id}] Re-Verification Passed. Task remains DONE.`,
+    NO_TEST_FILE: (id: string) => `⚠️  [${id}] No Test File found. Running all tests.`,
+    UNKNOWN_STATUS: (id: string, status: string) => `❓ [${id}] Unknown status: ${status}`,
+    VERIFICATION_FAILED: (id: string) => `❌ [${id}] Verification Failed. Setting/Keeping status as BLOCKED.`,
+    AI_PROMPT_FIX: (id: string) => `  "Task ${id} is BLOCKED. Review the logs at logs/last_run.log and fix the issues."\n`,
+    NEXT_STEP_COMPLETE: `\n👉 NEXT STEP: This task is complete. To pick up the next task, run:`,
+    NEXT_STEP_COMMAND: `   npm run task next\n`
+};
+
+function mkLog(msg: string) {
+    fs.appendFileSync(LOG_FILE, msg + '\n');
+    console.log(msg);
+}
+
+function runCmd(command: string) {
+    fs.appendFileSync(LOG_FILE, `\n> ${command}\n`);
+    try {
+        require('child_process').execSync(`set -o pipefail && ${command} | tee -a logs/last_run.log`, {
+            stdio: 'inherit',
+            shell: '/bin/bash'
+        });
+    } catch (e) {
+        throw new Error(`Command failed: ${command}`);
+    }
+}
 
 const TASKS_DIR = path.join(__dirname, '../tasks');
 let taskId = process.argv[2];
@@ -59,18 +98,20 @@ const parsed = fm(content);
 // @ts-ignore
 const attributes: any = parsed.attributes;
 
-console.log(`\n[${taskId}] ACTIVATING TASK: ${attributes.title}`);
+// Reset Log File
+fs.writeFileSync(LOG_FILE, '');
+mkLog(MESSAGES.ACTIVATING(taskId, attributes.title));
 
 try {
     if (attributes.status === 'TODO') {
-        console.log(`[${taskId}] Status is TODO. Moving to IN_PROGRESS...`);
+        mkLog(MESSAGES.TODO_MOVING(taskId));
         updateStatus(filePath, content, 'IN_PROGRESS');
-        console.log(`\n👉 NEXT STEP: Copy/Paste this to your AI Assistant:\n`);
-        console.log(`  "Task ${taskId} is now IN_PROGRESS. Read AGENTS.md for protocol rules, then implement the plan."\n`);
+        mkLog(MESSAGES.NEXT_STEP_PROMPT);
+        mkLog(MESSAGES.AI_PROMPT_IMPLEMENT(taskId));
     }
     else if (attributes.status === 'IN_PROGRESS' || attributes.status === 'BLOCKED') {
-        console.log(`[${taskId}] Status is ${attributes.status}. Running Verification...`);
-        execSync('npm run lint', { stdio: 'inherit' });
+        mkLog(MESSAGES.STATUS_VERIFYING(taskId, attributes.status));
+        runCmd('npm run lint');
 
         // Extract Test File
         const testFileMatch = content.match(/- \*\*Test File:\*\* `(.*)`/);
@@ -79,38 +120,38 @@ try {
             throw new Error("No Test File found");
         }
         const testFile = testFileMatch[1];
-        console.log(`[${taskId}] Running specific test: ${testFile}`);
+        mkLog(MESSAGES.TEST_RUNNING(taskId, testFile));
 
-        execSync(`npm test ${testFile}`, { stdio: 'inherit' });
-        console.log(`[${taskId}] Verified. Moving to DONE.`);
+        runCmd(`npm test ${testFile}`);
+        mkLog(MESSAGES.VERIFICATION_PASSED(taskId));
         updateStatus(filePath, content, 'DONE');
     }
     else if (attributes.status === 'DONE') {
-        console.log(`[${taskId}] Status is DONE. Running Re-Verification...`);
-        execSync('npm run lint', { stdio: 'inherit' });
+        mkLog(MESSAGES.DONE_REVERIFYING(taskId));
+        runCmd('npm run lint');
 
         // Extract Test File
         const testFileMatch = content.match(/- \*\*Test File:\*\* `(.*)`/);
         if (testFileMatch) {
             const testFile = testFileMatch[1];
-            console.log(`[${taskId}] Re-running specific test: ${testFile}`);
-            execSync(`npm test ${testFile}`, { stdio: 'inherit' });
+            mkLog(MESSAGES.TEST_RUNNING(taskId, testFile));
+            runCmd(`npm test ${testFile}`);
         } else {
-            console.log(`[${taskId}] ⚠️ No Test File found. Running all tests.`);
-            execSync('npm test', { stdio: 'inherit' });
+            mkLog(MESSAGES.NO_TEST_FILE(taskId));
+            runCmd('npm test');
         }
-        console.log(`[${taskId}] Re-Verified. Task remains DONE.`);
-        console.log(`\n👉 NEXT STEP: This task is complete. To pick up the next task, run:`);
-        console.log(`   npm run task next\n`);
+        mkLog(MESSAGES.DONE_REVERIFIED(taskId));
+        mkLog(MESSAGES.NEXT_STEP_COMPLETE);
+        mkLog(MESSAGES.NEXT_STEP_COMMAND);
     }
     else {
-        console.log(`[${taskId}] Unknown status: ${attributes.status}`);
+        mkLog(MESSAGES.UNKNOWN_STATUS(taskId, attributes.status));
     }
 } catch (e) {
-    console.error(`[${taskId}] Verification Failed. Setting/Keeping status as BLOCKED.`);
+    console.error(MESSAGES.VERIFICATION_FAILED(taskId));
     updateStatus(filePath, content, 'BLOCKED');
-    console.log(`\n👉 NEXT STEP: Fix the failures listed above (Lint/Test) and run the task again.`);
-    console.log(`   Tip: Check the logs above for specific errors in code or markdown.`);
+    mkLog(MESSAGES.NEXT_STEP_PROMPT);
+    mkLog(MESSAGES.AI_PROMPT_FIX(taskId));
 }
 
 function updateStatus(path: string, fullContent: string, newStatus: string) {
