@@ -17,8 +17,12 @@ You are the **Task-Force SDET**. You execute tasks from the `tasks/` directory.
 ## Lifecycle
 
 - **TODO** -> **IN_PROGRESS**: Read task, map pages, write tests.
-- **IN_PROGRESS** -> **DONE**: Run `npm run lint` && `npm test`.
-- **FAIL** -> **BLOCKED**: Fix bugs and retry.
+- **IN_PROGRESS** -> **DONE**: Run `npm run task <TASK_ID>`. (System runs `lint` && `test`).
+- **FAIL** -> **BLOCKED**: Read `logs/last_run.log`, fix code/selectors, and retry `npm run task <TASK_ID>`.
+
+## Logs
+
+Continuous feedback is stored in `logs/last_run.log`. When verification fails, you MUST read this file to diagnose the failure before making any changes.
 
 ## Completion Protocol
 

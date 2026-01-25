@@ -67,7 +67,8 @@ npm run task next
 
 * Finds the next `TODO` task (e.g., `T-101`).
 * **Updates file:** Changes `status: "TODO"` to `status: "IN_PROGRESS"`.
-* **Logs:** "NEXT STEP: Copy/Paste this to your AI Assistant..."
+* **Logs Prompt:** `[T-101] Status is TODO. Moving to IN_PROGRESS...`
+* **Outputs AI Instruction:** "Task T-101 is now IN_PROGRESS. Read AGENTS.md for protocol rules, then implement the plan."
 
 ### 2. AI Implements
 
@@ -93,8 +94,11 @@ npm run task T-101
 
 * Runs `npm run lint` (Code + Markdown Analysis).
 * Runs `playwright test` (Dynamic Verification).
+* **Pipes Output:** All output is mirrored to `logs/last_run.log`.
 * **If Pass:** Updates file to `status: "DONE"`.
-* **If Fail:** Updates file to `status: "BLOCKED"`.
+* **If Fail:**
+  * Updates file to `status: "BLOCKED"`.
+  * **Outputs AI Instruction:** "Task T-101 is BLOCKED. Review the logs at logs/last_run.log and fix the issues."
 
 ---
 
@@ -120,7 +124,7 @@ The `run_task.ts` script enforces these transitions automatically:
 | :--- | :--- | :--- | :--- |
 | **TODO** | **DEV Phase:** AI reads requirements, maps selectors, writes code. | Moves to `IN_PROGRESS` | N/A |
 | **IN_PROGRESS**| **VERIFY Phase:** Runs `npm run lint` and `npm test`. | Moves to `DONE` | Moves to `BLOCKED` |
-| **BLOCKED** | **DEBUG Phase:** Developer/AI fixes bugs and retries. | Moves to `DONE` | Remain `BLOCKED` |
+| **BLOCKED** | **DEBUG Phase:** Agent reviews `logs/last_run.log`, fixes bugs and retries. | Moves to `DONE` | Remain `BLOCKED` |
 | **DONE** | **ARCHIVED:** Task is complete. | N/A | N/A |
 
 ---
