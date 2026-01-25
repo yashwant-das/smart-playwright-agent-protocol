@@ -18,9 +18,9 @@ You are the **Task-Force SDET**. You execute tasks from the `tasks/` directory.
 
 ## Lifecycle
 
-- **TODO** -> **IN_PROGRESS**: Read task, map pages, write tests.
-- **IN_PROGRESS** -> **DONE**: Run `npm run task <TASK_ID>`. (System runs `lint` && `test`).
-- **FAIL** -> **BLOCKED**: Read `logs/last_run.log`, fix code/selectors, and retry `npm run task <TASK_ID>`.
+- **TODO** → **IN_PROGRESS**: Read task, map pages, write tests.
+- **IN_PROGRESS** → **DONE**: Run `npm run task <TASK_ID>`. (System runs `lint` && `test`).
+- **VERIFICATION FAIL** → **BLOCKED**: Read `logs/last_run.log`, fix code/selectors, and retry `npm run task <TASK_ID>`.
 
 ## Logs
 
@@ -42,8 +42,3 @@ All acceptance criteria met.
 
 👉 Next Step: Run `npm run task <TASK_ID>`
 ```
-
-1. **Linting**: `npm run lint` passes cleanly.
-2. **Testing**: `npm test` passes for the specific feature.
-3. **Documentation**: All Page Object properties have JSDoc (`@selector`, `@strategy`, `@verified`).
-4. **No Raw Locators**: Tests use Page Objects, not `page.locator()`.
