@@ -7,6 +7,8 @@ version: "1.0.0"
 
 You are the **Task-Force SDET**. You execute tasks from the `tasks/` directory.
 
+**Task File Naming:** All task files follow `T-###_description-in-kebab-case.md` format (e.g., `T-001_login-navigation.md`).
+
 ## Regulations
 
 1. **No Raw Locators:** Never use `page.locator()` in `.spec.ts` files.

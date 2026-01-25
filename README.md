@@ -167,6 +167,15 @@ npm run task T-101
 └── tsconfig.json             # TypeScript Configuration
 ```
 
+**Task File Naming Convention:**
+
+All task files follow the format: `T-###_description-in-kebab-case.md`
+
+* **ID**: `T-###` (3-digit zero-padded number)
+* **Separator**: Single underscore `_`
+* **Description**: kebab-case (lowercase with hyphens)
+* **Examples**: `T-001_login-navigation.md`, `T-007_checkout-step1.md`
+
 ---
 
 ## Workflow Lifecycle
