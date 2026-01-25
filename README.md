@@ -20,6 +20,10 @@ This framework eliminates "implicit state." The status of a Task File (`tasks/*.
 
 ## Getting Started
 
+### Prerequisites
+
+* **IDE Extension:** Install [mcp-playwright](https://github.com/executeautomation/mcp-playwright) in your Agentic IDE (Cursor/Windsurf/Cline).
+
 ### Installation
 
 ```bash
@@ -129,6 +133,7 @@ The `run_task.ts` script enforces these transitions automatically:
 1. **Zero Raw Locators:** `page.locator()` is **FORBIDDEN** in `tests/`. Use Page Object properties.
 2. **JSDoc Authority:** All Page Object properties must define `@selector`, `@strategy`, and `@verified`.
 3. **Linter is Law:** Code must pass `npm run lint` before a task can be marked `DONE`.
+4. **MCP-First:** You SHOULD use the [mcp-playwright](https://github.com/executeautomation/mcp-playwright) tool to explore pages and verify selectors before writing code.
 
 ---
 
