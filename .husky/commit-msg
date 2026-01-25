@@ -1,0 +1,24 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+commit_msg_file=$1
+first_line=$(head -n 1 "$commit_msg_file")
+
+# Ignore merge commits
+if echo "$first_line" | grep -qE "^Merge"; then
+  exit 0
+fi
+
+# Regex check
+# Types: feat, fix, heal, map, arch, refactor, test, docs, chore
+# Scope: required, lowercase alphanumeric + dashes
+pattern="^(feat|fix|heal|map|arch|refactor|test|docs|chore)\([a-z0-9-]+\): .+$"
+
+if ! echo "$first_line" | grep -qE "$pattern"; then
+  echo "❌ Invalid Commit Message Format!"
+  echo "   Expected: <type>(<scope>): <subject>"
+  echo "   Allowed Types: feat, fix, heal, map, arch, refactor, test, docs, chore"
+  echo "   Example: feat(auth): add login page"
+  echo "   Your message: $first_line"
+  exit 1
+fi

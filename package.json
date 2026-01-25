@@ -3,7 +3,9 @@
   "version": "5.0.0",
   "scripts": {
     "test": "playwright test",
-    "lint": "eslint 'pages/**/*.ts' 'tests/**/*.ts'",
+    "lint:code": "eslint 'pages/**/*.ts' 'tests/**/*.ts'",
+    "lint:md": "markdownlint '**/*.md' --ignore node_modules",
+    "lint": "npm run lint:code && npm run lint:md",
     "task": "ts-node scripts/run_task.ts",
     "prepare": "husky install"
   },
@@ -14,9 +16,10 @@
     "@typescript-eslint/parser": "^6.19.0",
     "eslint": "^8.56.0",
     "eslint-plugin-jsdoc": "^48.0.0",
+    "front-matter": "^4.0.2",
     "husky": "^9.0.0",
+    "markdownlint-cli": "^0.47.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3",
-    "front-matter": "^4.0.2"
+    "typescript": "5.3.3"
   }
 }

@@ -8,12 +8,12 @@ priority: "High"
 
 T-001: Automate Login Page Critical Path
 
-## 🎯 Objective
+## Objective
 
 Automate the primary authentication flow for the e-commerce application.
 We need to verify that a standard user can log in and that invalid credentials show an error.
 
-## 📂 Context
+## Context
 
 - **Page Object:** `pages/LoginPage.ts` (Does not exist yet)
 - **Test File:** `tests/auth.spec.ts`
@@ -26,13 +26,13 @@ We need to verify that a standard user can log in and that invalid credentials s
 3. [ ] Write test: "Should redirect to inventory on success".
 4. [ ] Write test: "Should show error on locked_out_user".
 
-## 🚫 Blockers & Error Logs
+## Blockers & Error Logs
 
 - None
 
-## ✅ Definition of Done
+## Acceptance Criteria
 
-- [ ] **Page Object:** `LoginPage.ts` created with `@verified` tags for today.
-- [ ] **Test:** `auth.spec.ts` passes with 2 scenarios.
-- [ ] **Lint:** `npm run lint` passes.
-- [ ] **Result:** `npm test` is green.
+> (See Standard DoD in AGENTS.md)
+
+- [ ] (Specific functional requirement)
+- [ ] (Specific functional requirement)

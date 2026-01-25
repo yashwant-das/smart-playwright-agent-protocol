@@ -10,7 +10,7 @@ module.exports = {
       "error",
       {
         "selector": "CallExpression[callee.property.name='locator']",
-        "message": "❌ VIOLATION: Raw page.locator() is FORBIDDEN. Use Page Objects."
+        "message": "VIOLATION: Raw page.locator() is FORBIDDEN. Use Page Objects."
       }
     ]
   },
