@@ -1,44 +1,22 @@
 {
-  "name": "smart-playwright-agent-protocol",
-  "version": "1.0.0",
-  "description": "A strict Agentic Protocol and Memory System for Playwright. Uses MCP (Model Context Protocol) and a structured .ai/ filesystem to enforce architectural standards, self-healing, and institutional memory.",
-  "main": "index.js",
+  "name": "smart-playwright-taskforce",
+  "version": "5.0.0",
   "scripts": {
     "test": "playwright test",
-    "test:headed": "playwright test --headed",
-    "test:ui": "playwright test --ui",
-    "test:debug": "playwright test --debug",
-    "test:report": "playwright show-report",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint .",
-    "lint:fix": "eslint . --fix",
-    "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.ai/1_CONTEXT/prompts\" \"#universal_daily_workflow.md\"",
-    "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\" \"#.ai/1_CONTEXT/prompts\" \"#universal_daily_workflow.md\"",
-    "format": "prettier --write .",
-    "type-check": "tsc --noEmit",
-    "mcp:start": "npx -y @executeautomation/playwright-mcp-server"
+    "lint": "eslint 'pages/**/*.ts' 'tests/**/*.ts'",
+    "task": "ts-node scripts/run_task.ts",
+    "prepare": "husky install"
   },
-  "keywords": [
-    "playwright",
-    "mcp-server",
-    "agentic-workflow",
-    "self-healing",
-    "qa-automation",
-    "sdet-agent",
-    "model-context-protocol"
-  ],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@playwright/test": "^1.57.0",
-    "@types/node": "^25.0.3",
-    "@typescript-eslint/eslint-plugin": "^8.52.0",
-    "@typescript-eslint/parser": "^8.52.0",
-    "eslint": "^9.39.2",
-    "eslint-plugin-playwright": "^2.4.1",
-    "markdownlint-cli2": "^0.20.0",
-    "prettier": "^3.7.4",
-    "typescript": "^5.9.3"
+    "@playwright/test": "^1.41.0",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-jsdoc": "^48.0.0",
+    "husky": "^9.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "front-matter": "^4.0.2"
   }
 }

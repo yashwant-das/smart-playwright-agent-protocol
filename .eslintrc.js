@@ -1,42 +1,20 @@
 module.exports = {
+  root: true,
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: './tsconfig.json',
-    sourceType: 'module',
-    ecmaVersion: 2021,
-    tsconfigRootDir: __dirname,
-  },
-  plugins: ['@typescript-eslint', 'playwright'],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:playwright/recommended',
-  ],
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
+  plugins: ['@typescript-eslint', 'jsdoc'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   rules: {
-    'no-console': 'warn',
-    '@typescript-eslint/no-explicit-any': 'error',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    'playwright/no-networkidle': 'warn', // Allow networkidle in BasePage for now
+    "jsdoc/require-jsdoc": ["error", { "require": { "FunctionDeclaration": true, "MethodDefinition": true }, "contexts": ["PropertyDefinition"] }],
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["selector", "strategy", "verified", "reason"] }],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "CallExpression[callee.property.name='locator']",
+        "message": "❌ VIOLATION: Raw page.locator() is FORBIDDEN. Use Page Objects."
+      }
+    ]
   },
   overrides: [
-    {
-      files: ['**/*.spec.ts', '**/*.test.ts'],
-      rules: {
-        // Playwright-specific rules for test files
-      },
-    },
-  ],
-  ignorePatterns: [
-    'node_modules/**',
-    'playwright-report/**',
-    'test-results/**',
-    '.ai/**',
-    'dist/**',
-    '.eslintrc.js',
-  ],
+    { "files": ["pages/**/*.ts"], "rules": { "no-restricted-syntax": "off" } }
+  ]
 };

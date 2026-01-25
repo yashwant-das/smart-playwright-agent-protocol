@@ -1,150 +1,250 @@
-# Smart Playwright Agent Protocol
+# Smart Playwright Protocol v5.0 (Task-Force Edition)
 
-> **The Operating System for SDET Agents: MCP-Native, Memory-First, and Strictly Governed.**
-
-[![Playwright](https://img.shields.io/badge/Playwright-v1.57-green)](https://playwright.dev)
-[![Protocol](https://img.shields.io/badge/Protocol-v1.0.0-orange)](.ai/1_CONTEXT/workflow.md)
-[![MCP](https://img.shields.io/badge/Model%20Context%20Protocol-Enabled-blue)](https://modelcontextprotocol.io)
-[![Agentic Workflow](https://img.shields.io/badge/Agentic-Workflow-purple)](.ai/1_CONTEXT/workflow.md)
+**Codename:** Task Force
+**Architecture:** Zero-Trust, File-Based Automation.
+**Objective:** Deterministic UI automation managed by a file-system state machine.
 
 ---
 
-## Core Philosophy: Protocol over Prompting
+## ⚡ Core Logic
 
-Most AI coding assistants are "fire and forget"—they generate code, but they don't know *why* they wrote it, nor do they remember it later.
+This framework removes the concept of "implicit state." The status of a Task File (`tasks/*.md`) is the **Single Source of Truth** for the automation lifecycle.
 
-**Smart Playwright Agent** is not just a bot; it is a **Protocol** that enforces:
+1. **State is File-Based:** We do not track progress in git commit messages or external Jira boards. If `tasks/T-001.md` says `status: TODO`, the work is not done.
+2. **Zero-Trust Execution:** The AI Agent is not trusted to "remember" rules.
 
-1. **Grounded Verification (via MCP):** The Agent must "touch" (highlight) an element via the Model Context Protocol before it is allowed to write a selector.
-2. **Institutional Memory (`.ai/`):** A file-system based brain that stores architectural decisions, failure patterns, and verified selectors.
-3. **Strict Governance:** The Agent acts as a "Senior Architect," adhering to strict Git standards, Page Object Models, and a 7-phase daily workflow.
+* **Static Analysis:** `eslint` blocks commits with missing JSDoc or raw locators.
+* **Runtime Enforcers:** The `run_task.ts` script forces a strict `DEV` -> `TEST` -> `DONE` transition.
 
----
-
-## The Agent "Brain" Structure (`.ai/`)
-
-Unlike other frameworks where context is lost when the chat window closes, this framework maintains a persistent memory on disk.
-
-### `.ai/` - The Agent Brain
-
-- **1_CONTEXT/** (Immutable Truths)
-  - [mission.md](.ai/1_CONTEXT/mission.md) - The Agent's Prime Directives
-  - [decision_log.md](.ai/1_CONTEXT/decision_log.md) - Architectural Decision Records (ADR)
-  - [tech_stack.md](.ai/1_CONTEXT/tech_stack.md) - Approved tools & versions
-- **2_PLANNING/** (Working Memory)
-  - [active_sprint.md](.ai/2_PLANNING/active_sprint.md) - Current context & todo list
-  - **maps/** - Visual UI maps (Screenshots)
-  - **daily_logs/** - Session rollover history
-- **3_MEMORY/** (Long-Term Memory)
-  - [selector_vault.md](.ai/3_MEMORY/selector_vault.md) - Database of verified, working selectors
-  - [failure_patterns.md](.ai/3_MEMORY/failure_patterns.md) - Library of known bugs & fixes
-  - [lessons_learned.md](.ai/3_MEMORY/lessons_learned.md) - Strategic insights
+3. **Atomic Work Units:** Every feature is a self-contained Markdown file containing its own Context, Objective, and Status.
 
 ---
 
-## Powered by MCP (Model Context Protocol)
+## 📂 Project Structure
 
-This framework leverages the **`@executeautomation/playwright-mcp-server`** to give the AI direct, tools-based access to the browser.
+```text
+.
+├── AGENTS.md                  # The Protocol Definition (AI Read-Only)
+├── tasks/                     # The State Database (Work Items)
+│   ├── template.md            # Blueprint
+│   └── T-001_Login.md         # Active Task
+├── scripts/                   # The Automation Engine
+│   └── run_task.ts            # State Machine Logic
+├── pages/                     # Page Objects (Strict JSDoc)
+├── tests/                     # Playwright Specs
+├── .husky/                    # Git Hooks
+├── .eslintrc.js               # Static Analysis Rules
+└── package.json
 
-Instead of hallucinating selectors, the Agent executes tools:
-
-- `mcp_highlight_element`: To visually confirm a selector works.
-- `mcp_get_page_content`: To read the DOM structure intelligently.
-- `mcp_screenshot`: To capture visual evidence for mapping.
-
----
-
-## The 7-Phase Daily Workflow
-
-We treat AI interaction as a disciplined software development lifecycle, not a chat. (See [Full Workflow](.ai/1_CONTEXT/workflow.md))
-
-### **Phase 1: Morning Ritual (Session Startup)**
-
-**"Context Loading."** The Agent reads the [`active_sprint.md`](.ai/2_PLANNING/active_sprint.md) and checks environment health before accepting tasks.
-
-### **Phase 2: Cartographer Mode (Discovery)**
-
-**"Map before you build."** The Agent explores the UI, highlights elements via MCP, and populates the [`selector_vault.md`](.ai/3_MEMORY/selector_vault.md). No code is written yet—only verification.
-
-### **Phase 3: Architect Mode (Implementation)**
-
-**"Strict Construction."** The Agent generates Page Objects and Tests, but it is **only** allowed to use selectors present in the Vault. This prevents "hallucinated" locators.
-
-### **Phase 4: Healer Mode (Maintenance & Fixes)**
-
-**"Root Cause Analysis."** If a test fails, the Agent consults [`failure_patterns.md`](.ai/3_MEMORY/failure_patterns.md) to see if this is a known issue before attempting a hot-fix.
-
-### **Phase 5: Git Commit Flow (Universal)**
-
-**"Hygiene & Standards."** The Agent follows a strict Conventional Commits standard (`feat`, `map`, `heal`), ensuring the git history tells a story.
-
-### **Phase 6: Night Watchman Mode (Session Shutdown)**
-
-**"Rollover."** The Agent summarizes the session, updates the logs, and cleans the active sprint file to save context tokens for the next run.
-
-### **Phase 7: Continuous Modes (As Needed)**
-
-**"On Demand."** Specialized modes like **Smoke Test Mode** (Quick Health Check) and **Archaeology Mode** (Legacy Code Analysis) that can be triggered simply by asking.
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 22+ (LTS recommended)
-- An MCP-compatible IDE (Cursor, Windsurf) or Agent Client.
-
-### Installation
-
-```bash
-# 1. Clone the protocol
-git clone https://github.com/your-repo/smart-playwright-agent-protocol.git
-
-# 2. Install dependencies (Includes MCP Server)
-npm install
-
-# 3. Start the MCP Server (if running standalone)
-npm run mcp:start
 ```
 
-### Usage (The Protocol)
+---
 
-**Do not just ask the AI to "write a test."** Initialize the protocol:
+## 🚦 Workflow
 
-1. **Start a Session:**
+### 1. Create a Task
 
-> "Activate **Morning Ritual Mode**. Perform environment health check."
+Create a file in `tasks/` using `template.md`.
 
-2. **Map a Feature:**
+**Example `tasks/T-101.md`:**
 
-> "Activate **Cartographer Mode**. Map the 'Checkout' page. Verify selectors for the 'Place Order' button using MCP highlight."
+```markdown
+---
+id: "T-101"
+title: "Map Checkout"
+status: "TODO"
+owner: "AI"
+priority: "High"
+---
 
-3. **Build the Test:**
+**T-101: Map Checkout**
 
-> "Activate **Architect Mode**. Create a Page Object for Checkout using the selectors from the Vault."
+## 🎯 Objective
+Automate the checkout flow including shipping address entry.
 
-4. **Commit Documentation:**
+## 📂 Context
+- **Page Object:** `pages/CheckoutPage.ts`
+- **Test File:** `tests/checkout.spec.ts`
 
-> "Activate **Git Commit Flow**. Stage the new checkout files and prepare a `feat` commit."
+## ✅ Definition of Done
+- [ ] Page Object updated with JSDoc
+- [ ] Test passed
+- [ ] Lint passed
 
-5. **End the Session:**
+```
 
-> "Activate **Night Watchman Mode**. Roll over the active sprint to a new daily log."
+### 2. Execute (The Loop)
+
+Run the state machine. The script detects the `status` and advances the lifecycle.
+
+```bash
+# Option A: Auto-pilot (Runs next TODO item)
+npm run task next
+
+# Option B: Sniper Mode (Runs specific ID)
+npm run task T-101
+
+```
+
+### 3. Lifecycle Transitions
+
+The `run_task.ts` script enforces these transitions automatically:
+
+| Current Status | Action Taken | Next Status (Success) | Next Status (Fail) |
+| --- | --- | --- | --- |
+| `TODO` | **DEV:** AI reads requirements, maps Selectors, writes Spec. | `IN_PROGRESS` | N/A |
+| `IN_PROGRESS` | **VERIFY:** Runs `lint` and `test`. | `DONE` | `BLOCKED` |
+| `BLOCKED` | **DEBUG:** Agent attempts 1 fix and re-runs test. | `DONE` | `BLOCKED` |
+| `DONE` | **None:** Task is archived. | N/A | N/A |
 
 ---
 
-## "Self-Healing" vs. "Self-Correction"
+## 🛡️ The Regulations (Immutable)
 
-While other agents try to "guess" fixes, this protocol uses **Institutional Memory**:
+Violating these rules causes immediate build failure.
 
-1. **Check:** Is the selector in [`selector_vault.md`](.ai/3_MEMORY/selector_vault.md)?
-2. **Verify:** Use MCP to see if the element is still visible.
-3. **Reference:** Check [`decision_log.md`](.ai/1_CONTEXT/decision_log.md) for architectural rules.
-4. **Fix:** Update code + Update Vault + Log Failure Pattern.
+1. **Zero Raw Locators:** `page.locator()` is **FORBIDDEN** in `tests/`. It is only allowed in `pages/`.
+2. **JSDoc Authority:** All Page Object properties must define `@selector`, `@strategy`, and `@verified` date.
+3. **Linter is Law:** You cannot commit code that fails `npm run lint`.
 
 ---
 
-### ⚠️ **Status: Release Candidate (v1.0.0)**
+## 🛠️ Setup & Boilerplate
 
-*This protocol is currently in a pre-release phase. All specifications and features are subject to change.*
+### 1. `package.json`
+
+```json
+{
+  "name": "smart-playwright-taskforce",
+  "version": "5.0.0",
+  "scripts": {
+    "test": "playwright test",
+    "lint": "eslint 'pages/**/*.ts' 'tests/**/*.ts'",
+    "task": "ts-node scripts/run_task.ts",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-jsdoc": "^48.0.0",
+    "husky": "^9.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "front-matter": "^4.0.2"
+  }
+}
+
+```
+
+### 2. `AGENTS.md` (The Protocol)
+
+```markdown
+---
+name: "Task-Force SDET"
+version: "5.0.0"
+---
+
+# 🛡️ Mission
+You are the **Task-Force SDET**. You execute tasks from the `tasks/` directory.
+
+# 📜 Regulations
+1. **No Raw Locators:** Never use `page.locator()` in `.spec.ts` files.
+2. **JSDoc Authority:** Every Page Object property MUST have `@selector`, `@strategy`, and `@verified` (YYYY-MM-DD).
+3. **Linter is Law:** If `npm run lint` fails, stop and fix it.
+
+# 🔄 Lifecycle
+- **TODO** -> **IN_PROGRESS**: Read task, map pages, write tests.
+- **IN_PROGRESS** -> **DONE**: Run `npm run lint` && `npm test`.
+- **FAIL** -> **BLOCKED**: Fix bugs and retry.
+
+```
+
+### 3. `scripts/run_task.ts` (The Engine)
+
+```typescript
+import * as fs from 'fs';
+import * as path from 'path';
+import { execSync } from 'child_process';
+import fm from 'front-matter';
+
+const TASKS_DIR = path.join(__dirname, '../tasks');
+let taskId = process.argv[2];
+
+// Logic: Handle 'next' command
+if (taskId === 'next') {
+    const allFiles = fs.readdirSync(TASKS_DIR).filter(f => f.endsWith('.md') && f !== 'template.md');
+    for (const f of allFiles) {
+        const c = fs.readFileSync(path.join(TASKS_DIR, f), 'utf8');
+        // @ts-ignore
+        if (fm(c).attributes.status === 'TODO') {
+            taskId = f.split('_')[0];
+            break;
+        }
+    }
+    if (taskId === 'next') { console.log("🎉 No TODO tasks found!"); process.exit(0); }
+}
+
+const files = fs.readdirSync(TASKS_DIR);
+const taskFile = files.find(f => f.startsWith(taskId));
+if (!taskFile) { console.error(`❌ Task ${taskId} not found.`); process.exit(1); }
+
+const filePath = path.join(TASKS_DIR, taskFile);
+const content = fs.readFileSync(filePath, 'utf8');
+const parsed = fm(content);
+// @ts-ignore
+const attributes: any = parsed.attributes;
+
+console.log(`\n🚀 ACTIVATING TASK: ${attributes.title}`);
+
+try {
+    if (attributes.status === 'TODO') {
+        console.log("🔹 Moving to IN_PROGRESS...");
+        updateStatus(filePath, content, 'IN_PROGRESS');
+    }
+    else if (attributes.status === 'IN_PROGRESS') {
+        console.log("🔹 Running Verification...");
+        execSync('npm run lint', { stdio: 'inherit' });
+        execSync('npm test', { stdio: 'inherit' });
+        console.log("✅ Verified. Moving to DONE.");
+        updateStatus(filePath, content, 'DONE');
+    }
+} catch (e) {
+    console.error("❌ Verification Failed. Moving to BLOCKED.");
+    updateStatus(filePath, content, 'BLOCKED');
+}
+
+function updateStatus(path: string, fullContent: string, newStatus: string) {
+    const newContent = fullContent.replace(/status: ".*"/, `status: "${newStatus}"`);
+    fs.writeFileSync(path, newContent);
+}
+
+```
+
+### 4. `.eslintrc.js` (The Enforcer)
+
+```javascript
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'jsdoc'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  rules: {
+    "jsdoc/require-jsdoc": ["error", { "require": { "ClassProperty": true }, "contexts": ["PropertyDefinition"] }],
+    "jsdoc/check-tag-names": ["error", { "definedTags": ["selector", "strategy", "verified", "reason"] }],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "CallExpression[callee.property.name='locator']",
+        "message": "❌ VIOLATION: Raw page.locator() is FORBIDDEN. Use Page Objects."
+      }
+    ]
+  },
+  overrides: [
+    { "files": ["pages/**/*.ts"], "rules": { "no-restricted-syntax": "off" } }
+  ]
+};
+
+```
