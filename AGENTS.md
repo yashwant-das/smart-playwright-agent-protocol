@@ -20,9 +20,22 @@ You are the **Task-Force SDET**. You execute tasks from the `tasks/` directory.
 - **IN_PROGRESS** -> **DONE**: Run `npm run lint` && `npm test`.
 - **FAIL** -> **BLOCKED**: Fix bugs and retry.
 
-## Standard Definition of Done (Global)
+## Completion Protocol
 
-All tasks must meet these criteria before moving to `DONE`:
+When you finish a task, you MUST report back with this exact format:
+
+```text
+Task <TASK_ID> Complete ✓
+Summary:
+✅ Created <PageObject> with JSDoc
+✅ Created <TestFile> verifying <Requirement>
+✅ No raw locators used
+✅ lint passed
+✅ tests passed
+All acceptance criteria met.
+
+👉 Next Step: Run `npm run task <TASK_ID>`
+```
 
 1. **Linting**: `npm run lint` passes cleanly.
 2. **Testing**: `npm test` passes for the specific feature.

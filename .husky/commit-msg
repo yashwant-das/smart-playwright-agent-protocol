@@ -11,15 +11,15 @@ fi
 
 # Regex check
 # Types: feat, fix, heal, map, arch, refactor, test, docs, chore
-# Scope: required, lowercase alphanumeric + dashes
-pattern="^(feat|fix|heal|map|arch|refactor|test|docs|chore)\([a-z0-9-]+\): .+$"
+# Scope: optional, lowercase alphanumeric + dashes
+pattern="^(feat|fix|heal|map|arch|refactor|test|docs|chore)(\([a-z0-9-]+\))?: .+$"
 
 if ! echo "$first_line" | grep -qE "$pattern"; then
   echo "❌ Invalid Commit Message Format!"
-  echo "   Expected: <type>(<scope>): <subject>"
+  echo "   Expected: <type>(<scope>): <subject> OR <type>: <subject>"
   echo "   Allowed Types: feat, fix, heal, map, arch, refactor, test, docs, chore"
-  echo "   Allowed Scopes: login, products, cart, checkout, pages, tests, config, ci"
-  echo "   Example: feat(auth): add login page"
+  echo "   Allowed Scopes: (Optional) login, products, cart, checkout, pages, tests, config, ci"
+  echo "   Example: feat(auth): add login page OR feat: add login page"
   echo "   Your message: $first_line"
   exit 1
 fi

@@ -45,7 +45,12 @@ if (taskId === 'next') {
 }
 
 const files = fs.readdirSync(TASKS_DIR);
-const taskFile = files.find(f => f.startsWith(taskId));
+const taskFile = files.find(f => {
+    return f === taskId ||
+        f === `${taskId}.md` ||
+        f.startsWith(`${taskId}_`) ||
+        f.startsWith(`${taskId}.`);
+});
 if (!taskFile) { console.error(`[${taskId}] Task not found.`); process.exit(1); }
 
 const filePath = path.join(TASKS_DIR, taskFile);
