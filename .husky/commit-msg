@@ -1,5 +1,5 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+
 
 commit_msg_file=$1
 first_line=$(head -n 1 "$commit_msg_file")
@@ -18,6 +18,7 @@ if ! echo "$first_line" | grep -qE "$pattern"; then
   echo "❌ Invalid Commit Message Format!"
   echo "   Expected: <type>(<scope>): <subject>"
   echo "   Allowed Types: feat, fix, heal, map, arch, refactor, test, docs, chore"
+  echo "   Allowed Scopes: login, products, cart, checkout, pages, tests, config, ci"
   echo "   Example: feat(auth): add login page"
   echo "   Your message: $first_line"
   exit 1

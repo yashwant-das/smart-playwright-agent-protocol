@@ -1,42 +1,51 @@
-# Dependencies
+# --- Dependencies ---
 node_modules/
-/node_modules
-package-lock.json
-!package-lock.json
-yarn.lock
-!yarn.lock
-pnpm-lock.yaml
-!pnpm-lock.yaml
+.pnpm-store/
 
-# Testing & Playwright
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-test-results.json
-results.xml
-junit.xml
-.nyc_output/
-coverage/
-
-# Build & Dist
-/dist/
-/out/
-/build/
-
-# Environment
+# --- Environment & Secrets ---
 .env
 .env.local
 .env.*.local
+.env.test
+.env.production
+.env.development
 
-# Logs
+# --- Build & Dist ---
+/build/
+/dist/
+/out/
+
+# --- Testing & Playwright ---
+/blob-report/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+coverage/
+.nyc_output/
+junit.xml
+results.xml
+test-results.json
+
+# --- Logs ---
+*.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-*.log
+lint_output.txt
 
-# OS Generated
+# --- IDE & Editor ---
+.cursor/
+.idea/
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+*.swp
+*.swo
+
+# --- OS Generated ---
 .DS_Store
 .DS_Store?
 ._*
@@ -45,24 +54,4 @@ pnpm-debug.log*
 ehthumbs.db
 Thumbs.db
 
-# IDE & Editor
-.vscode/
-!.vscode/extensions.json
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-.idea/
-.cursor/
-*.swp
-*.swo
 
-# Agentic QA Protocol - Brain Hygiene
-# Don't commit screenshots (too large)
-.ai/2_PLANNING/maps/*.png
-
-# Don't commit old archives (optional, but good for keeping repo light)
-.ai/2_PLANNING/daily_logs/archive/
-
-# Don't commit temp notes/scratches
-.ai/2_PLANNING/scratch.md
-lint_output.txt
