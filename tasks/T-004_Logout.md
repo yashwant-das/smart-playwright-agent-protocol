@@ -18,7 +18,7 @@ Verify that a user can successfully logout and return to the login page.
 - **Test File:** `tests/logout.spec.ts`
 
 ## Acceptance Criteria
->
+
 > (See Standard DoD in AGENTS.md)
 
 - [ ] Sidebar component created.

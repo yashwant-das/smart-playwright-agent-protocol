@@ -6,6 +6,34 @@ owner: "AI"
 priority: "High"
 ---
 
+<details>
+<summary>📖 Task File Format Guide (Click to expand)</summary>
+
+## YAML Frontmatter Fields
+
+- **status**: `REQUIRED` - Used by `run_task.ts` for workflow transitions (TODO → IN_PROGRESS → DONE → BLOCKED)
+- **id**: `OPTIONAL` - Redundant with filename, kept for potential future tooling
+- **title**: `OPTIONAL` - Redundant with markdown header, kept for metadata queries
+- **owner**: `OPTIONAL` - Not currently used by scripts, available for future dashboards
+- **priority**: `OPTIONAL` - Not currently used by scripts, available for future filtering
+
+## Naming Convention
+
+All task files MUST follow: `T-###_description-in-kebab-case.md`
+
+Examples: `T-001_login-navigation.md`, `T-007_checkout-step1.md`
+
+## Why the Duplication?
+
+You'll notice the task ID and title appear in both YAML and the markdown header:
+
+- **YAML frontmatter** = Machine-readable (parsed by scripts)
+- **Markdown header** = Human-readable (what you see when opening the file)
+
+This separation ensures both automated tools and humans can work with these files effectively.
+
+</details>
+
 T-001: Automate Login Page Critical Path
 
 ## Objective
@@ -19,7 +47,7 @@ We need to verify that a standard user can log in and that invalid credentials s
 - **Test File:** `tests/auth.spec.ts`
 - **Url:** `/login`
 
-## 📝 Implementation Plan
+## Implementation Plan
 
 1. [ ] Map `username`, `password`, and `login-button` using `data-test` attributes.
 2. [ ] Implement `login(user, pass)` method in Page Object.

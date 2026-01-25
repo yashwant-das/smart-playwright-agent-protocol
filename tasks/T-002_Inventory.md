@@ -1,7 +1,7 @@
 ---
 id: "T-002"
 title: "Verify Inventory Page"
-status: "TODO"
+status: "IN_PROGRESS"
 owner: "AI"
 priority: "Medium"
 ---
@@ -18,7 +18,7 @@ Verify that the inventory page displays products correctly after login.
 - **Test File:** `tests/inventory.spec.ts`
 
 ## Acceptance Criteria
->
+
 > (See Standard DoD in AGENTS.md)
 
 - [ ] Page Object created for Inventory.

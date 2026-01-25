@@ -85,12 +85,18 @@ if (taskId === 'next') {
 
 const files = fs.readdirSync(TASKS_DIR);
 const taskFile = files.find(f => {
-    return f === taskId ||
-        f === `${taskId}.md` ||
-        f.startsWith(`${taskId}_`) ||
-        f.startsWith(`${taskId}.`);
+    const fLower = f.toLowerCase();
+    const taskIdLower = taskId.toLowerCase();
+    return fLower === taskIdLower ||
+        fLower === `${taskIdLower}.md` ||
+        fLower.startsWith(`${taskIdLower}_`) ||
+        fLower.startsWith(`${taskIdLower}.`);
 });
 if (!taskFile) { console.error(`[${taskId}] Task not found.`); process.exit(1); }
+
+// Extract the actual task ID from the filename (without .md extension)
+// This ensures we use the correct naming convention (e.g., T-002_inventory, not T-002_Inventory)
+const actualTaskId = taskFile.replace(/\.md$/, '');
 
 const filePath = path.join(TASKS_DIR, taskFile);
 const content = fs.readFileSync(filePath, 'utf8');
@@ -100,58 +106,58 @@ const attributes: any = parsed.attributes;
 
 // Reset Log File
 fs.writeFileSync(LOG_FILE, '');
-mkLog(MESSAGES.ACTIVATING(taskId, attributes.title));
+mkLog(MESSAGES.ACTIVATING(actualTaskId, attributes.title));
 
 try {
     if (attributes.status === 'TODO') {
-        mkLog(MESSAGES.TODO_MOVING(taskId));
+        mkLog(MESSAGES.TODO_MOVING(actualTaskId));
         updateStatus(filePath, content, 'IN_PROGRESS');
         mkLog(MESSAGES.NEXT_STEP_PROMPT);
-        mkLog(MESSAGES.AI_PROMPT_IMPLEMENT(taskId));
+        mkLog(MESSAGES.AI_PROMPT_IMPLEMENT(actualTaskId));
     }
     else if (attributes.status === 'IN_PROGRESS' || attributes.status === 'BLOCKED') {
-        mkLog(MESSAGES.STATUS_VERIFYING(taskId, attributes.status));
+        mkLog(MESSAGES.STATUS_VERIFYING(actualTaskId, attributes.status));
         runCmd('npm run lint');
 
         // Extract Test File
         const testFileMatch = content.match(/- \*\*Test File:\*\* `(.*)`/);
         if (!testFileMatch) {
-            console.error(`[${taskId}] ❌ No Test File defined in ${taskFile}. Cannot verify.`);
+            console.error(`[${actualTaskId}] ❌ No Test File defined in ${taskFile}. Cannot verify.`);
             throw new Error("No Test File found");
         }
         const testFile = testFileMatch[1];
-        mkLog(MESSAGES.TEST_RUNNING(taskId, testFile));
+        mkLog(MESSAGES.TEST_RUNNING(actualTaskId, testFile));
 
         runCmd(`npm test ${testFile}`);
-        mkLog(MESSAGES.VERIFICATION_PASSED(taskId));
+        mkLog(MESSAGES.VERIFICATION_PASSED(actualTaskId));
         updateStatus(filePath, content, 'DONE');
     }
     else if (attributes.status === 'DONE') {
-        mkLog(MESSAGES.DONE_REVERIFYING(taskId));
+        mkLog(MESSAGES.DONE_REVERIFYING(actualTaskId));
         runCmd('npm run lint');
 
         // Extract Test File
         const testFileMatch = content.match(/- \*\*Test File:\*\* `(.*)`/);
         if (testFileMatch) {
             const testFile = testFileMatch[1];
-            mkLog(MESSAGES.TEST_RUNNING(taskId, testFile));
+            mkLog(MESSAGES.TEST_RUNNING(actualTaskId, testFile));
             runCmd(`npm test ${testFile}`);
         } else {
-            mkLog(MESSAGES.NO_TEST_FILE(taskId));
+            mkLog(MESSAGES.NO_TEST_FILE(actualTaskId));
             runCmd('npm test');
         }
-        mkLog(MESSAGES.DONE_REVERIFIED(taskId));
+        mkLog(MESSAGES.DONE_REVERIFIED(actualTaskId));
         mkLog(MESSAGES.NEXT_STEP_COMPLETE);
         mkLog(MESSAGES.NEXT_STEP_COMMAND);
     }
     else {
-        mkLog(MESSAGES.UNKNOWN_STATUS(taskId, attributes.status));
+        mkLog(MESSAGES.UNKNOWN_STATUS(actualTaskId, attributes.status));
     }
 } catch (e) {
-    console.error(MESSAGES.VERIFICATION_FAILED(taskId));
+    console.error(MESSAGES.VERIFICATION_FAILED(actualTaskId));
     updateStatus(filePath, content, 'BLOCKED');
     mkLog(MESSAGES.NEXT_STEP_PROMPT);
-    mkLog(MESSAGES.AI_PROMPT_FIX(taskId));
+    mkLog(MESSAGES.AI_PROMPT_FIX(actualTaskId));
 }
 
 function updateStatus(path: string, fullContent: string, newStatus: string) {
