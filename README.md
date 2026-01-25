@@ -1,4 +1,4 @@
-# Smart Playwright Protocol v5.0 (Task-Force Edition)
+# Smart Playwright Protocol v1.0 (Task-Force Edition)
 
 **Codename:** Task Force  
 **Architecture:** Zero-Trust, File-Based Automation  
