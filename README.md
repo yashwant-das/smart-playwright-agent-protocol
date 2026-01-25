@@ -15,7 +15,7 @@ This framework eliminates "implicit state." The status of a Task File (`tasks/*.
 1. **State is File-Based:** Progress is tracked in markdown files, not git messages or external tools.
 2. **Zero-Trust Execution:**
     * **Static Analysis:** `eslint` strictly forbids raw locators in tests and enforces JSDoc in Page Objects.
-    * **Runtime Enforcement:** The [run_task.ts](scripts/run_task.ts) engine forces a strict `DEV` -> `TEST` -> `DONE` transition.
+    * **Runtime Enforcement:** The [run_task.ts](scripts/run_task.ts) engine forces a strict `TODO` → `IN_PROGRESS` → `DONE` transition (with `BLOCKED` on failures).
 3. **Atomic Work Units:** Every feature is a self-contained Markdown file with its own Context, Objective, and Status.
 
 ---
@@ -32,6 +32,38 @@ This framework eliminates "implicit state." The status of a Task File (`tasks/*.
 npm install
 npx playwright install
 ```
+
+### Git Hooks & Quality Gates
+
+This project uses **Husky** to enforce code quality and commit standards at commit time:
+
+**Pre-commit Hook:**
+
+* Automatically runs `npm run lint` (ESLint + Markdownlint)
+* Prevents commits with linting errors
+* Ensures all code meets quality standards before entering version control
+
+**Commit Message Enforcement:**
+
+* Follows Conventional Commits with custom types tailored for test automation
+* Format: `<type>(<scope>): <subject>` or `<type>: <subject>`
+* **Allowed types:** `feat`, `fix`, `heal`, `map`, `arch`, `refactor`, `test`, `docs`, `chore`
+* **Allowed scopes (optional):** `login`, `products`, `cart`, `checkout`, `pages`, `tests`, `config`, `ci`
+* Examples:
+  * `feat(auth): add login page`
+  * `fix: resolve selector issue`
+  * `heal(cart): fix flaky test`
+  * `map(checkout): add new page object`
+
+**Setup Git Commit Template (Optional):**
+
+```bash
+git config commit.template .gitmessage
+```
+
+This will provide helpful hints when writing commit messages.
+
+---
 
 ### Running Tasks
 
@@ -86,7 +118,7 @@ You turn to your AI Assistant (Cursor/Windsurf/Cline) and say:
 
 ### 3. Human Triggers Verification
 
-One the AI finishes writing code, you run:
+Once the AI finishes writing code, you run:
 
 ```bash
 npm run task T-101
@@ -108,12 +140,31 @@ npm run task T-101
 
 ```text
 .
-├── AGENTS.md                  # Protocol Definition & Rules (Read-Only)
-├── tasks/                     # State Database (Work Items)
-├── scripts/                   # Automation Engine (run_task.ts)
+├── .husky/                    # Git Hooks (Pre-commit, Commit-msg)
+│   ├── commit-msg            # Conventional commit enforcement
+│   └── pre-commit            # Lint before commit
+├── logs/                      # Runtime Logs
+│   └── last_run.log          # Latest task execution output
 ├── pages/                     # Page Objects (Strict JSDoc Enforced)
+│   ├── BasePage.ts           # Base class with common methods
+│   └── *.ts                  # Feature-specific page objects
+├── scripts/                   # Automation Engine
+│   └── run_task.ts           # Task lifecycle state machine
+├── tasks/                     # State Database (Work Items)
+│   ├── template.md           # Task template
+│   └── T-*.md                # Individual task files
 ├── tests/                     # Playwright Specs (No Raw Locators)
-└── .eslintrc.js               # Static Analysis Configuration
+│   ├── fixtures/             # Test fixtures & data files
+│   └── *.spec.ts             # Test specifications
+├── .eslintrc.js              # ESLint Configuration
+├── .gitmessage               # Git Commit Message Template
+├── .gitignore                # Git Ignore Rules
+├── .markdownlint.json        # Markdownlint Configuration
+├── AGENTS.md                 # Protocol Definition & Rules (Read-Only)
+├── package.json              # Dependencies & Scripts
+├── playwright.config.ts      # Playwright Configuration
+├── README.md                 # Main Documentation
+└── tsconfig.json             # TypeScript Configuration
 ```
 
 ---
@@ -146,5 +197,7 @@ The `run_task.ts` script enforces these transitions automatically:
 ## Configuration
 
 * **Protocol Definition:** [AGENTS.md](AGENTS.md)
-* **Lint Configuration:** [.eslintrc.js](.eslintrc.js)
+* **ESLint Configuration:** [.eslintrc.js](.eslintrc.js)
+* **Markdownlint Configuration:** [.markdownlint.json](.markdownlint.json)
+* **Git Hooks:** [.husky/](.husky/) (Pre-commit & Commit-msg)
 * **Dependencies:** [package.json](package.json)

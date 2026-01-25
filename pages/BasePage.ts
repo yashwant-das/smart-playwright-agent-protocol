@@ -20,8 +20,16 @@ export class BasePage {
    * @param name - Name of the screenshot file
    */
   async takeScreenshot(name: string) {
+    const fs = await import('fs');
+    const screenshotDir = 'test-results/screenshots';
+
+    // Ensure directory exists
+    if (!fs.existsSync(screenshotDir)) {
+      fs.mkdirSync(screenshotDir, { recursive: true });
+    }
+
     await this.page.screenshot({
-      path: `test-results/screenshots/${name}_${Date.now()}.png`,
+      path: `${screenshotDir}/${name}_${Date.now()}.png`,
       fullPage: true
     });
   }
