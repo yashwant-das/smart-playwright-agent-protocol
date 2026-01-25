@@ -88,11 +88,17 @@ This will provide helpful hints when writing commit messages.
 The primary interface is the `task` script, which manages the lifecycle state machine.
 
 **Auto-Pilot Mode:**
-Runs the next available `TODO` task.
+Runs the next available task based on priority order:
+
+1. **IN_PROGRESS** - Resumes any task currently being worked on
+2. **BLOCKED** - Fixes failed tasks before starting new work
+3. **TODO** - Starts the next pending task
 
 ```bash
 npm run task next
 ```
+
+> **Note:** This prioritizes fixing broken tasks (BLOCKED) before starting new features (TODO).
 
 **Sniper Mode:**
 Runs a specific task by ID.
