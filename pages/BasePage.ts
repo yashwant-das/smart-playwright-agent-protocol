@@ -21,7 +21,7 @@ export class BasePage {
    */
   async takeScreenshot(name: string) {
     await this.page.screenshot({
-      path: `.ai/2_PLANNING/maps/${name}_${Date.now()}.png`,
+      path: `test-results/screenshots/${name}_${Date.now()}.png`,
       fullPage: true
     });
   }
