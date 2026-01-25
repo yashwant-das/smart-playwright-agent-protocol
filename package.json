@@ -1,6 +1,7 @@
 {
   "name": "smart-playwright-taskforce",
-  "version": "5.0.0",
+  "version": "1.0.0",
+  "description": "Agentic SDET Framework: A file-system state machine for Playwright automation with MCP-first exploration, strict JSDoc enforcement, and collaborative human-AI workflows.",
   "scripts": {
     "test": "playwright test",
     "lint:code": "eslint 'pages/**/*.ts' 'tests/**/*.ts'",

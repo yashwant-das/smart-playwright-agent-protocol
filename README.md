@@ -4,6 +4,8 @@
 **Architecture:** Zero-Trust, File-Based Automation  
 **Objective:** Deterministic UI automation managed by a file-system state machine.
 
+Agentic SDET Framework: A file-system state machine for Playwright automation with MCP-first exploration, strict JSDoc enforcement, and collaborative human-AI workflows.
+
 ---
 
 ## Core Philosophy
