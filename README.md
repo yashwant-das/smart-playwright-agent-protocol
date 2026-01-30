@@ -8,7 +8,7 @@ Agentic SDET Framework: A file-system state machine for Playwright automation wi
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # 1. Install dependencies
@@ -22,11 +22,11 @@ npm run task next
 npm run task T-001
 ```
 
-> 💡 **First time?** Read [The Handshake](#-the-handshake-how-you-work) section to understand the workflow.
+> **First time?** Read [The Handshake](#the-handshake-how-you-work) section to understand the workflow.
 
 ---
 
-## 📖 Core Philosophy
+## Core Philosophy
 
 This framework eliminates "implicit state." The status of a Task File (`tasks/*.md`) is the **Single Source of Truth** for the automation lifecycle.
 
@@ -38,7 +38,7 @@ This framework eliminates "implicit state." The status of a Task File (`tasks/*.
 
 ---
 
-## 🎯 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -109,7 +109,7 @@ npm run task T-001
 
 ---
 
-## 🤝 The Handshake (How You Work)
+## The Handshake (How You Work)
 
 This architecture requires a specific 2-step loop between YOU (The Human) and the AI.
 
@@ -160,7 +160,7 @@ npm run task T-101
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 .
@@ -202,7 +202,7 @@ All task files follow the format: `T-###_description-in-kebab-case.md`
 
 ---
 
-## 🔄 Workflow Lifecycle
+## Workflow Lifecycle
 
 The `run_task.ts` script enforces these transitions automatically:
 
@@ -215,7 +215,7 @@ The `run_task.ts` script enforces these transitions automatically:
 
 ---
 
-## ⚖️ The Regulations
+## The Regulations
 
 > [!IMPORTANT]
 > Violating these rules causes immediate build failure.
@@ -227,7 +227,7 @@ The `run_task.ts` script enforces these transitions automatically:
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 * **Protocol Definition:** [AGENTS.md](AGENTS.md)
 * **ESLint Configuration:** [.eslintrc.js](.eslintrc.js)
