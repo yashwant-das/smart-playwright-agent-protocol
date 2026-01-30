@@ -7,7 +7,7 @@ priority: "High"
 ---
 
 <details>
-<summary>📖 Task File Format Guide (Click to expand)</summary>
+<summary>Task File Format Guide (Click to expand)</summary>
 
 ## YAML Frontmatter Fields
 
